@@ -95,7 +95,7 @@ public class UsuarioDao {
     }
 
     public ArrayList<Usuario> findAll(String searchText) throws SQLException {
-        String sql = "SELECT * FROM USUARIOS WHERE INSTR(nombre, ?) ORDER BY usuario";
+        String sql = "SELECT * FROM USUARIOS WHERE INSTR(nombre, ?) ORDER BY nombre";
         ArrayList<Usuario> users = new ArrayList<>();
 
         PreparedStatement statement = connection.prepareStatement(sql);
