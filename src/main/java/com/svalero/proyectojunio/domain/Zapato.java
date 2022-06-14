@@ -2,21 +2,23 @@ package com.svalero.proyectojunio.domain;
 
 public class Zapato {
 
+    private int idZapato;
     private String modelo;
     private double numero;
     private String color;
-    private String sexo_zapato;
+    private String sexoZapato;
     private String descripcion;
     private double precio;
 
     public Zapato() {
     }
 
-    public Zapato(String modelo, double numero, String color, String sexo_zapato, String descripcion, double precio) {
+    public Zapato(int idZapato, String modelo, double numero, String color, String sexoZapato, String descripcion, double precio) {
+        this.idZapato = idZapato;
         this.modelo = modelo;
         this.numero = numero;
         this.color = color;
-        this.sexo_zapato = sexo_zapato;
+        this.sexoZapato = sexoZapato;
         this.descripcion = descripcion;
         this.precio = precio;
     }
@@ -33,8 +35,8 @@ public class Zapato {
         return color;
     }
 
-    public String getSexo_zapato() {
-        return sexo_zapato;
+    public String getSexoZapato() {
+        return sexoZapato;
     }
 
     public String getDescripcion() {
@@ -43,6 +45,14 @@ public class Zapato {
 
     public double getPrecio() {
         return precio;
+    }
+
+    public int getIdZapato() {
+        return idZapato;
+    }
+
+    public void setIdZapato(int idZapato) {
+        this.idZapato = idZapato;
     }
 
     public void setModelo(String modelo) {
@@ -57,8 +67,8 @@ public class Zapato {
         this.color = color;
     }
 
-    public void setSexo_zapato(String sexo_zapato) {
-        this.sexo_zapato = sexo_zapato;
+    public void setSexoZapato(String sexoZapato) {
+        this.sexoZapato = sexoZapato;
     }
 
     public void setDescripcion(String descripcion) {

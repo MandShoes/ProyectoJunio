@@ -2,19 +2,21 @@ package com.svalero.proyectojunio.domain;
 
 public class Marca {
 
+    private int idMarca;
     private String nombre;
     private String descripcion;
     private String logo;
-    private String direccion_sede;
+    private String direccionSede;
 
     public Marca() {
     }
 
-    public Marca(String nombre, String descripcion, String logo, String direccion_sede) {
+    public Marca(int idMarca, String nombre, String descripcion, String logo, String direccionSede) {
+        this.idMarca = idMarca;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.logo = logo;
-        this.direccion_sede = direccion_sede;
+        this.direccionSede = direccionSede;
     }
 
     public String getNombre() {
@@ -29,8 +31,16 @@ public class Marca {
         return logo;
     }
 
-    public String getDireccion_sede() {
-        return direccion_sede;
+    public String getDireccionSede() {
+        return direccionSede;
+    }
+
+    public int getIdMarca() {
+        return idMarca;
+    }
+
+    public void setIdMarca(int idMarca) {
+        this.idMarca = idMarca;
     }
 
     public void setNombre(String nombre) {
@@ -45,7 +55,7 @@ public class Marca {
         this.logo = logo;
     }
 
-    public void setDireccion_sede(String direccion_sede) {
-        this.direccion_sede = direccion_sede;
+    public void setDireccionSede(String direccionSede) {
+        this.direccionSede = direccionSede;
     }
 }
