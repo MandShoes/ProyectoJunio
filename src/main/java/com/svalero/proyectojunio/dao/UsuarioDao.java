@@ -77,11 +77,11 @@ public class UsuarioDao {
         String sql = "UPDATE usuarios SET id = ?, usuario = ?, contrasena = ?, nombre = ?, email = ? WHERE id = ?";
 
         PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setInt(1, user.getId());
-        statement.setString(2, user.getUsuario());
-        statement.setString(3, user.getContrasena());
-        statement.setString(4, user.getNombre());
-        statement.setString(5, user.getEmail());
+        statement.setInt(1, user.getIdUsuario());
+        statement.setString(2, user.getContrasena());
+        statement.setString(3, user.getNombre());
+        statement.setString(4, user.getEmail());
+        statement.setString(5, user.getDireccion());
         int rows = statement.executeUpdate();
         return rows == 1;
     }
