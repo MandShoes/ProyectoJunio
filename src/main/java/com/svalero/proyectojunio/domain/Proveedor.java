@@ -2,6 +2,7 @@ package com.svalero.proyectojunio.domain;
 
 public class Proveedor {
 
+    private int idProveedor;
     private String nombre;
     private  String direccion;
     private String email;
@@ -11,7 +12,8 @@ public class Proveedor {
     public Proveedor() {
     }
 
-    public Proveedor(String nombre, String direccion, String email, String cif, String pais) {
+    public Proveedor(int idProveedor, String nombre, String direccion, String email, String cif, String pais) {
+        this.idProveedor = idProveedor;
         this.nombre = nombre;
         this.direccion = direccion;
         this.email = email;
@@ -37,6 +39,14 @@ public class Proveedor {
 
     public String getPais() {
         return pais;
+    }
+
+    public int getIdProveedor() {
+        return idProveedor;
+    }
+
+    public void setIdProveedor(int idProveedor) {
+        this.idProveedor = idProveedor;
     }
 
     public void setNombre(String nombre) {

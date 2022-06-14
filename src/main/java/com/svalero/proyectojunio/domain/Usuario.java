@@ -2,6 +2,7 @@ package com.svalero.proyectojunio.domain;
 
 public class Usuario {
 
+    private int idUsuario;
     private String nombre;
     private String contrasena;
     private String email;
@@ -10,7 +11,8 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String nombre, String contrasena, String email, String direccion) {
+    public Usuario(int idUsuario, String nombre, String contrasena, String email, String direccion) {
+        this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.contrasena = contrasena;
         this.email = email;
@@ -31,6 +33,14 @@ public class Usuario {
 
     public String getDireccion() {
         return direccion;
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public void setNombre(String nombre) {

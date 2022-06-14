@@ -1,6 +1,5 @@
 package com.svalero.proyectojunio.domain;
 
-import jdk.vm.ci.meta.Local;
 
 import java.time.LocalDate;
 
