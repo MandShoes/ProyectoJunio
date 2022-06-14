@@ -9,42 +9,21 @@ public class Zapato {
     private String sexoZapato;
     private String descripcion;
     private double precio;
+    private Marca marca;
+    private Proveedor proveedor;
 
     public Zapato() {
     }
 
-    public Zapato(int idZapato, String modelo, double numero, String color, String sexoZapato, String descripcion, double precio) {
-        this.idZapato = idZapato;
+    public Zapato(String modelo, double numero, String color, String sexoZapato, String descripcion, double precio, Marca marca, Proveedor proveedor) {
         this.modelo = modelo;
         this.numero = numero;
         this.color = color;
         this.sexoZapato = sexoZapato;
         this.descripcion = descripcion;
         this.precio = precio;
-    }
-
-    public String getModelo() {
-        return modelo;
-    }
-
-    public double getNumero() {
-        return numero;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public String getSexoZapato() {
-        return sexoZapato;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public double getPrecio() {
-        return precio;
+        this.marca = marca;
+        this.proveedor = proveedor;
     }
 
     public int getIdZapato() {
@@ -55,27 +34,68 @@ public class Zapato {
         this.idZapato = idZapato;
     }
 
+    public String getModelo() {
+        return modelo;
+    }
+
     public void setModelo(String modelo) {
         this.modelo = modelo;
+    }
+
+    public double getNumero() {
+        return numero;
     }
 
     public void setNumero(double numero) {
         this.numero = numero;
     }
 
+    public String getColor() {
+        return color;
+    }
+
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public String getSexoZapato() {
+        return sexoZapato;
     }
 
     public void setSexoZapato(String sexoZapato) {
         this.sexoZapato = sexoZapato;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public double getPrecio() {
+        return precio;
     }
 
     public void setPrecio(double precio) {
         this.precio = precio;
     }
+
+    public Marca getMarca() {
+        return marca;
+    }
+
+    public void setMarca(Marca marca) {
+        this.marca = marca;
+    }
+
+    public Proveedor getProveedor() {
+        return proveedor;
+    }
+
+    public void setProveedor(Proveedor proveedor) {
+        this.proveedor = proveedor;
+    }
 }
+
