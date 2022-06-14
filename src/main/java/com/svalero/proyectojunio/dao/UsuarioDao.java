@@ -17,7 +17,7 @@ public class UsuarioDao {
     }
 
     public Optional<Usuario> login(String email, String contrasena) throws SQLException {
-        String sql = "SELECT * FROM USUARIO WHERE email = ? AND contrasena = ?";
+        String sql = "SELECT * FROM USUARIOS WHERE email = ? AND contrasena = ?";
         Usuario user = null;
 
         PreparedStatement statement = connection.prepareStatement(sql);
@@ -35,7 +35,9 @@ public class UsuarioDao {
         if (existsUser(user.getEmail()))
             throw new EmailAlreadyExistException();
 
-        String sql = "INSERT INTO USUARIOS (id_usuario, nombre, contrasena, email, direccion) VALUES (?, ?, ?)";
+        // TODO: revisar que la excepcion sea correcta
+
+        String sql = "INSERT INTO USUARIOS (id_usuario, nombre, contrasena, email, direccion) VALUES (?, ?, ?, ?, ?)";
 
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setInt(1, user.getIdUsuario());
@@ -54,12 +56,10 @@ public class UsuarioDao {
         statement.setString(2, contrasena);
         int rows = statement.executeUpdate();
         return rows == 1;
-
-        // TODO: falta borrar de verdad el usuario
     }
 
     public boolean modify(String email, Usuario user) throws SQLException {
-        String sql = "UPDATE USUARIOS SET id_usuario = ?, nombre = ?, contrasena = ?, email = ?, direccion = ? WHERE usuario = ?";
+        String sql = "UPDATE USUARIOS SET id_usuario = ?, nombre = ?, contrasena = ?, email = ?, direccion = ? WHERE email = ?";
 
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setInt(1, user.getIdUsuario());
@@ -69,12 +69,10 @@ public class UsuarioDao {
         statement.setString(5, user.getDireccion());
         int rows = statement.executeUpdate();
         return rows == 1;
-
-        // TODO: falta modificar de verdad el usuario
     }
 
     public boolean modify(int id, Usuario user) throws SQLException {
-        String sql = "UPDATE usuarios SET id = ?, usuario = ?, contrasena = ?, nombre = ?, email = ? WHERE id = ?";
+        String sql = "UPDATE USUARIOS SET id_usuario = ?, nombre = ?, contrasena = ?, email = ?, direccion = ? WHERE id_usuario = ?";
 
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setInt(1, user.getIdUsuario());
@@ -87,7 +85,7 @@ public class UsuarioDao {
     }
 
     public ArrayList<Usuario> findAll() throws SQLException {
-        String sql = "SELECT * FROM usuarios ORDER BY usuario";
+        String sql = "SELECT * FROM USUARIOS ORDER BY nombre";
         ArrayList<Usuario> users = new ArrayList<>();
 
         PreparedStatement statement = connection.prepareStatement(sql);
@@ -101,12 +99,11 @@ public class UsuarioDao {
     }
 
     public ArrayList<Usuario> findAll(String searchText) throws SQLException {
-        String sql = "SELECT * FROM usuarios WHERE INSTR(usuario, ?) != 0 OR INSTR(nombre, ?) != 0 ORDER BY usuario";
+        String sql = "SELECT * FROM USUARIOS WHERE INSTR(nombre, ?) ORDER BY usuario";
         ArrayList<Usuario> users = new ArrayList<>();
 
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1, searchText);
-        statement.setString(2, searchText);
         ResultSet resultSet = statement.executeQuery();
         while (resultSet.next()) {
             Usuario user = fromResultSet(resultSet);
@@ -116,12 +113,12 @@ public class UsuarioDao {
         return users;
     }
 
-    public Optional<Usuario> findByUsuario(String usuario) throws SQLException {
-        String sql = "SELECT * FROM usuarios WHERE usuario = ?";
+    public Optional<Usuario> findByUsuario(String nombre) throws SQLException {
+        String sql = "SELECT * FROM USUARIOS WHERE nombre = ?";
         Usuario user = null;
 
         PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setString(1, usuario);
+        statement.setString(1, nombre);
         ResultSet resultSet = statement.executeQuery();
         if (resultSet.next()) {
             user = fromResultSet(resultSet);
@@ -131,7 +128,7 @@ public class UsuarioDao {
     }
 
     public Optional<Usuario> findById(int id) throws SQLException {
-        String sql = "SELECT * FROM usuarios WHERE id = ?";
+        String sql = "SELECT * FROM USUARIOS WHERE id_usuario = ?";
         Usuario user = null;
 
         PreparedStatement statement = connection.prepareStatement(sql);
@@ -146,16 +143,16 @@ public class UsuarioDao {
 
     private Usuario fromResultSet(ResultSet resultSet) throws SQLException {
         Usuario user = new Usuario();
-        user.setId(resultSet.getInt("id"));
-        user.setUsuario(resultSet.getString("usuario"));
+        user.setIdUsuario(resultSet.getInt("id_usuario"));
         user.setContrasena(resultSet.getString("contrasena"));
         user.setNombre(resultSet.getString("nombre"));
         user.setEmail(resultSet.getString("email"));
+        user.setDireccion(resultSet.getString("direccion"));
         return user;
     }
 
-    private boolean existsUser(String usuario) throws SQLException {
-        Optional<Usuario> user = findByUsuario(usuario);
+    private boolean existsUser(String email) throws SQLException {
+        Optional<Usuario> user = findByUsuario(email);
         return user.isPresent();
     }
 }
