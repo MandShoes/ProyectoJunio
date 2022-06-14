@@ -1,14 +1,14 @@
 package com.svalero.proyectojunio.dao;
 
 import com.svalero.proyectojunio.domain.Marca;
-import com.svalero.proyectojunio.domain.Usuario;
-import com.svalero.proyectojunio.exception.EmailAlreadyExistException;
+import com.svalero.proyectojunio.domain.Marcas;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class MarcaDao {
 
@@ -56,6 +56,20 @@ public class MarcaDao {
         }
 
         return marcas;
+    }
+
+    public Optional<Marca> findById(int id) throws SQLException {
+        String sql = "SELECT * FROM MARCAS WHERE id_marca = ?";
+        Marca marcas = null;
+
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setInt(1, id);
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            marcas = fromResultSet(resultSet);
+        }
+
+        return Optional.ofNullable(marcas);
     }
 
 
