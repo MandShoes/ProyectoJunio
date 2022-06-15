@@ -24,7 +24,7 @@ public class ValoracionDao {
 
         //Mirar lo de la fecha
 
-        statement.setDate(1, valoracion.getFechaValoracion());
+        statement.setDate(1, convertToDate(valoracion.getFechaValoracion()));
         statement.setInt(2, valoracion.getCantidadEstrellas());
         statement.setString(3, valoracion.getDescripcion());
         statement.setInt(4, zapato.getIdZapato());
@@ -90,7 +90,7 @@ public class ValoracionDao {
 
         //Hay que cambiar el localdate a date o o cambiar la clase valoracion a date
         Date date = convertToDate(valoracion.getFechaValoracion());
-        valoracion.setFechaValoracion(resulset.getDate("fecha_valoracion"));
+        valoracion.setFechaValoracion(resulset.getDate(toLocalDate("fecha_valoracion")));
 
         valoracion.setCantidadEstrellas(resulset.getInt("cantidad_estrellas"));
         valoracion.setDescripcion(resulset.getString("descripcion"));
