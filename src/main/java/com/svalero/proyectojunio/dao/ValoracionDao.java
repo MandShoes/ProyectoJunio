@@ -5,6 +5,7 @@ import com.svalero.proyectojunio.domain.*;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class ValoracionDao {
 
@@ -55,6 +56,34 @@ public class ValoracionDao {
         return java.sql.Date.valueOf(dateToConvert);
     }
 
+    public boolean modify(int idUsuario, Zapato zapato, Valoracion valoracion) throws SQLException {
+
+        String sql = "UPDATE VALORACIONES SET fecha_valoracion = ?, cantidad_estrellas = ?, descripcion  = ? WHERE id_usuario = ? AND id_zapato = ?";
+
+        PreparedStatement statement = connection.prepareStatement(sql);
+
+        statement.setString(1, (valoracion.getFechaValoracion()));
+        statement.setInt(2, valoracion.getCantidadEstrellas());
+        statement.setString(3, valoracion.getDescripcion());
+
+        int rows = statement.executeUpdate();
+        return rows == 1;
+    }
+    public Optional<Valoracion> findById(int id) throws SQLException {
+        String sql = "SELECT * FROM VALORACIONES WHERE id_zapato = ?";
+        Valoracion valoracion = null;
+
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setInt(1, id);
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            valoracion = fromResultSet(resultSet);
+        }
+
+        return Optional.ofNullable(valoracion);
+    }
+
+
 
     private Valoracion fromResultSet(ResultSet resulset) throws SQLException {
         Valoracion valoracion = new Valoracion();
@@ -68,7 +97,7 @@ public class ValoracionDao {
 
         ZapatoDao zapatoDao = new ZapatoDao(connection);
         int idZapato = resulset.getInt("id_zapato");
-        //Crear un findbyid en zapato
+
         Zapato zapato = zapatoDao.findById(idZapato).get();
         valoracion.setZapato(zapato);
 

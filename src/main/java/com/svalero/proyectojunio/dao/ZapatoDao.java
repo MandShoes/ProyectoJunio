@@ -2,6 +2,7 @@ package com.svalero.proyectojunio.dao;
 
 import com.svalero.proyectojunio.domain.Marca;
 import com.svalero.proyectojunio.domain.Proveedor;
+import com.svalero.proyectojunio.domain.Usuario;
 import com.svalero.proyectojunio.domain.Zapato;
 
 import java.sql.Connection;
@@ -9,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class ZapatoDao {
     private Connection connection;
@@ -86,5 +88,18 @@ public class ZapatoDao {
         zapato.setProveedor(proveedor);
         return zapato;
 
+    }
+    public Optional<Zapato> findById(int id) throws SQLException {
+        String sql = "SELECT * FROM ZAPATOS WHERE id_zapato = ?";
+        Zapato zapato = null;
+
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setInt(1, id);
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            zapato = fromResultSet(resultSet);
+        }
+
+        return Optional.ofNullable(zapato);
     }
 }
