@@ -1,7 +1,6 @@
 package com.svalero.proyectojunio.dao;
 
 import com.svalero.proyectojunio.domain.Marca;
-import com.svalero.proyectojunio.domain.Marcas;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
