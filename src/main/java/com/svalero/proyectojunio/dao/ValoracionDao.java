@@ -59,6 +59,16 @@ public class ValoracionDao {
         return Optional.ofNullable(valoracion);
     }
 
+    public boolean delete(int idUsuario, int idZapato) throws SQLException {
+        String sql = "DELETE FROM VALORACIONES WHERE id_usuario = ? AND id_zapato = ?";
+
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setInt(1, idUsuario);
+        statement.setInt(2, idZapato);
+        int rows = statement.executeUpdate();
+        return rows == 1;
+    }
+
     private Valoracion fromResultSet(ResultSet resulset) throws SQLException {
         Valoracion valoracion = new Valoracion();
 
