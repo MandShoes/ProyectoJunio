@@ -8,18 +8,18 @@ public class Valoracion {
     private LocalDate fechaValoracion;
     private String descripcion;
 
-    private Marca marca;
+    private Usuario usuario;
 
     private Zapato zapato;
 
     public Valoracion() {
     }
 
-    public Valoracion(int cantidadEstrellas, LocalDate fechaValoracion, String descripcion, Marca marca, Zapato zapato) {
+    public Valoracion(int cantidadEstrellas, LocalDate fechaValoracion, String descripcion, Usuario usuario, Zapato zapato) {
         this.cantidadEstrellas = cantidadEstrellas;
         this.fechaValoracion = fechaValoracion;
         this.descripcion = descripcion;
-        this.marca = marca;
+        this.usuario = usuario;
         this.zapato = zapato;
     }
 
@@ -35,16 +35,17 @@ public class Valoracion {
         return descripcion;
     }
 
-    public Marca getMarca() {
-        return marca;
-    }
 
     public Zapato getZapato() {
         return zapato;
     }
 
-    public void setMarca(Marca marca) {
-        this.marca = marca;
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public void setZapato(Zapato zapato) {
