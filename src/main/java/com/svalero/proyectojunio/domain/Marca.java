@@ -11,8 +11,7 @@ public class Marca {
     public Marca() {
     }
 
-    public Marca(int idMarca, String nombre, String descripcion, String logo, String direccionSede) {
-        this.idMarca = idMarca;
+    public Marca(String nombre, String descripcion, String logo, String direccionSede) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.logo = logo;

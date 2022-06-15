@@ -13,12 +13,4 @@ public class Constants {
 
     public static final String USERNAME = "libraryuser";
     public static final String PASSWORD = "library1234";
-
-    public Date toDate(LocalDate dateToConvert){
-        return java.sql.Date.valueOf(dateToConvert);
-    }
-
-    public LocalDate toLocalDate(Date dateToConvert){
-        return new java.sql.Date(dateToConvert.getTime()).toLocalDate();
-    }
 }
