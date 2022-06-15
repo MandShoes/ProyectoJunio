@@ -18,7 +18,7 @@ public class ZapatoDao {
     }
 
     public void add(Zapato zapato, Marca marca, Proveedor proveedor) throws SQLException {
-        String sql = "INSERT INTO zapatos (modelo, numero, color, sexo, descripcion, precio, id_marca, id_proveedor) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO ZAPATOS (modelo, numero, color, sexo, descripcion, precio, id_marca, id_proveedor) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         connection.setAutoCommit(false);
 
@@ -38,7 +38,7 @@ public class ZapatoDao {
         connection.setAutoCommit(true);
     }
     public ArrayList<Zapato> findAll() throws SQLException {
-        String sql = "SELECT * FROM zapatos ORDER BY nombre";
+        String sql = "SELECT * FROM ZAPATOS ORDER BY nombre";
         ArrayList<Zapato> zapatos = new ArrayList<>();
 
         PreparedStatement statement = connection.prepareStatement(sql);
@@ -87,5 +87,4 @@ public class ZapatoDao {
         return zapato;
 
     }
-
 }
