@@ -1,5 +1,9 @@
 package com.svalero.proyectojunio.util;
 
+import java.sql.Date;
+import java.time.LocalDate;
+
+
 public class Constants {
     public static final String MYSQL_DRIVER = "com.mysql.cj.jdbc.Driver";
     public static final String ORACLE_DRIVER = "oracle.jdbc.driver.OracleDriver";
@@ -9,4 +13,12 @@ public class Constants {
 
     public static final String USERNAME = "libraryuser";
     public static final String PASSWORD = "library1234";
+
+    public Date toDate(LocalDate dateToConvert){
+        return java.sql.Date.valueOf(dateToConvert);
+    }
+
+    public LocalDate toLocalDate(Date dateToConvert){
+        return new java.sql.Date(dateToConvert.getTime()).toLocalDate();
+    }
 }
