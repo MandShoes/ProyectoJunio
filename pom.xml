@@ -4,14 +4,14 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.example</groupId>
+  <groupId>com.svalero.proyectojunio</groupId>
   <artifactId>AdMandProject</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
   <name>AdMandProject Maven Webapp</name>
   <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+  <url>http://www.admandproject.com</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -25,7 +25,7 @@
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
-      <version>3.0.1</version>
+      <version>3.11</version>
     </dependency>
     <!-- javadoc -->
     <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-javadoc-plugin -->
@@ -157,6 +157,26 @@
           <target>8</target>
         </configuration>
       </plugin>
+
+      <plugin>
+        <!--
+        Descargar e iniciar Tomcat
+        mvn tomcat7:deploy
+        mvn tomcat7:undeploy
+        mvn tomcat7:redeploy
+        -->
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        <version>2.2</version>
+        <configuration>
+          <url>http://localhost:8081/manager/text</url>
+          <server>tomcat8</server>
+          <path>/AdmandShoes</path>
+          <username>tomcat</username>
+          <password>tomcat</password>
+        </configuration>
+      </plugin>
+
     </plugins>
   </build>
 </project>
