@@ -63,12 +63,12 @@
       <input name="email" type="text" class="form-control w-25" id="email" value="<% if (user != null) out.print(user.getEmail()); %>">
     </div>
     <div class="mb-2">
-      <label for="direccion" class="form-label">Direction:</label>
+      <label for="direccion" class="form-label">Address:</label>
       <input name="direccion" type="text" class="form-control w-25" id="direccion" value="<% if (user != null) out.print(user.getDireccion()); %>">
     </div>
 
     <input type="hidden" name="action" value="<% if (user != null) out.print("modify"); else out.print("register"); %>">
-    <input type="hidden" name="usuarioId" value="<% if (user != null) out.print(user.getUsuarioId()); %>">
+    <input type="hidden" name="idUsuario" value="<% if (user != null) out.print(user.getIdUsuario()); %>">
     <button type="submit" class="btn btn-primary"><%= textButton %></button>
   </form>
   <div id="result"></div>
