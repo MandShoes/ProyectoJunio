@@ -69,6 +69,21 @@ public class ZapatoDao {
         return zapatos;
     }
 
+    public ArrayList<Zapato> findAllByBrand(int idMarca) throws SQLException {
+        String sql = "SELECT * FROM zapatos WHERE id_marca = ?";
+        ArrayList<Zapato> zapatos = new ArrayList<>();
+
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setInt(1, idMarca);
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()) {
+            Zapato zapato = fromResultSet(resultSet);
+            zapatos.add(zapato);
+        }
+
+        return zapatos;
+    }
+
     private Zapato fromResultSet(ResultSet resulset) throws SQLException {
         Zapato zapato = new Zapato();
         zapato.setIdZapato(resulset.getInt("id_zapato"));

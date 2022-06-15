@@ -5,8 +5,6 @@
 <%@ page import="com.svalero.proyectojunio.dao.UsuarioDao" %>
 <%@ page import="com.svalero.proyectojunio.dao.ZapatoDao" %>
 <%@ page import="com.svalero.proyectojunio.domain.Zapato" %>
-<%@ page import="com.svalero.proyectojunio.dao.MarcaDao" %>
-<%@ page import="com.svalero.proyectojunio.domain.Marca" %>
 <%
     Usuario currentUser = (Usuario) session.getAttribute("currentUser");
     if (currentUser == null) {
@@ -20,22 +18,22 @@
 </head>
 <body>
 <div class="container">
-    <h2>Navigate between the brands to choose the best shoe for your feet.</h2>
+    <h2>All available shoes of your favorite brand.</h2>
+
     <ul class="list-group">
         <%
-            // TODO: falta hacer que cuando pulses una marca te salgan todas las zapatillas de esa marca.
+            String marcaId = request.getParameter("id");
+
             Database database = new Database();
-            MarcaDao marcaDao = new MarcaDao(database.getConnection());
-            try {
-                List<Marca> marcas = marcaDao.findAll();
-                for (Marca marca: marcas) {
+            ZapatoDao zapatoDao = new ZapatoDao(database.getConnection());
+
+              try {
+                List<Zapato> zapatos = zapatoDao.findAllByBrand(marcaId);
+                for (Zapato zapato: zapatos) {
         %>
         <li class="list-group-item">
-            <a target="_blank" href="zapatospormarca.jsp?id=<%marca.getIdMarca() %>
-            <%= marca.getNombre() %>">
-            </a>
-            <img src="logos/<%= marca.getLogo %>" class="card-img-top" alt="imagen" style="margin-bottom:20px ! important; width:310px ! important; height:230px ! important">
-            <p><%= marca.getDescripcion() %> - <%= marca.getDireccionSede() %> </p>
+            <a target="_blank" href="zapato.jsp?id=<%= zapato.getIdZapato() %>"><%= zapato.getModelo() %></a>
+            <p><%= zapato.getMarca() %> - <%= zapato.getColor() %> | <%= zapato.getPrecio() %> </p>
         </li>
         <%
             }
@@ -46,7 +44,7 @@
         </div>
         <%
             }
-        %>
+
     </ul>
 </div>
 </body>
