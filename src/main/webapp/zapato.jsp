@@ -9,12 +9,12 @@
 </head>
 <body>
 <%
-    String relatoId = request.getParameter("id");
+    String zapatoId = request.getParameter("id");
     Database db = new Database();
     ZapatoDao zapatoDao = new ZapatoDao(db.getConnection());
     Zapato zapato = null;
     try {
-        Optional<Zapato> optionalZapato = zapatoDao.findById(Integer.parseInt(relatoId));
+        Optional<Zapato> optionalZapato = zapatoDao.findById(Integer.parseInt(zapatoId));
         zapato = optionalZapato.get();
 
 %>
