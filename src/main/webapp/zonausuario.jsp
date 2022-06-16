@@ -32,6 +32,27 @@
 <!-- Datos del usuario logueado -->
 <main class="contenedor">
     <h3>Your Profile</h3>
+    <form>
+        <fieldset disabled>
+            <legend>UserData</legend>
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Name</label>
+                <input type="text" id="nombre" class="form-control" value="<%= currentUser.getNombre() %>">
+            </div>
+            <div class="mb-3">
+                <label for="contrasena" class="form-label">Password</label>
+                <input type="password" id="contrasena" class="form-control" value="<%= currentUser.getContrasena() %>">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" id="email" class="form-control" value="<%= currentUser.getEmail() %>">
+            </div>
+            <div class="mb-3">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" id="address" class="form-control" value="<%= currentUser.getDireccion() %>">
+            </div>
+
+        </fieldset>
         <!-- Acceso a editar usuario -->
         <a href="edituser.jsp" class="btn btn-secondary">Editar datos de usuario</a>
 
