@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-/*
+
 @WebServlet("/deletevaloracion")
 public class DeleteValoracionServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,16 +25,14 @@ public class DeleteValoracionServlet extends HttpServlet {
         if (currentUser == null) {
             response.sendRedirect("login.jsp");
         }
-        String code = request.getParameter("code");
+        int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
+        int idZapato = Integer.parseInt(request.getParameter("idZapato"));
         Database database = new Database();
         ValoracionDao valDao = new ValoracionDao(database.getConnection());
         try {
-            valDao.delete(code);
-            response.sendRedirect("personalarea.jsp");
+            valDao.delete(idUsuario, idZapato);
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         }
     }
 }
-
- */

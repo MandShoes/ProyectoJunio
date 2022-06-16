@@ -3,6 +3,7 @@ package com.svalero.proyectojunio.dao;
 import com.svalero.proyectojunio.domain.*;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Optional;
 
@@ -14,32 +15,33 @@ public class ValoracionDao {
         this.connection = connection;
     }
 
-    public void add(Valoracion valoracion, Usuario usuario, Zapato zapato) throws SQLException {
+    public void add(Date date, int cantidadEstrellas, String descripcion, int idUsuario, int idZapato) throws SQLException {
         String sql = "INSERT INTO VALORACIONES (fecha_valoracion, cantidad_estrellas, descripcion, id_zapato, id_usuario) VALUES (?, ?, ?, ?, ?)";
 
         connection.setAutoCommit(false);
 
         PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setDate(1, java.sql.Date.valueOf(valoracion.getFechaValoracion()));
-        statement.setInt(2, valoracion.getCantidadEstrellas());
-        statement.setString(3, valoracion.getDescripcion());
-        statement.setInt(4, zapato.getIdZapato());
-        statement.setInt(5, usuario.getIdUsuario());
+        statement.setDate(1, date);
+        statement.setInt(2, cantidadEstrellas);
+        statement.setString(3, descripcion);
+        statement.setInt(4, idUsuario);
+        statement.setInt(5, idZapato);
         statement.executeUpdate();
         connection.commit();
         connection.setAutoCommit(true);
     }
 
-    public boolean modify(int idUsuario, Zapato zapato, Valoracion valoracion) throws SQLException {
+    public boolean modify(int idUsuario, int idZapato, Valoracion valoracion) throws SQLException {
 
         String sql = "UPDATE VALORACIONES SET fecha_valoracion = ?, cantidad_estrellas = ?, descripcion  = ? WHERE id_usuario = ? AND id_zapato = ?";
 
         PreparedStatement statement = connection.prepareStatement(sql);
 
-
-        statement.setDate(1, java.sql.Date.valueOf(valoracion.getFechaValoracion()));
+        statement.setDate(1, valoracion.getFechaValoracion());
         statement.setInt(2, valoracion.getCantidadEstrellas());
         statement.setString(3, valoracion.getDescripcion());
+        statement.setInt(4, idUsuario);
+        statement.setInt(5, idZapato);
 
         int rows = statement.executeUpdate();
         return rows == 1;
@@ -73,7 +75,7 @@ public class ValoracionDao {
     private Valoracion fromResultSet(ResultSet resulset) throws SQLException {
         Valoracion valoracion = new Valoracion();
 
-        valoracion.setFechaValoracion(new java.util.Date(resulset.getDate("fecha_valoracion").getTime()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        valoracion.setFechaValoracion(new resulset.getDate("fecha_valoracion"));
         valoracion.setCantidadEstrellas(resulset.getInt("cantidad_estrellas"));
         valoracion.setDescripcion(resulset.getString("descripcion"));
 

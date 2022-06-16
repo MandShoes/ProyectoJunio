@@ -12,6 +12,28 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#form1").on("submit", function(event) {
+            event.preventDefault();
+            var formValue = $(this).serialize();
+            $.post("editvaloracion", formValue, function(data) {
+                $("#result1").html(data);
+            });
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#form2").on("submit", function(event) {
+            event.preventDefault();
+            var formValue = $(this).serialize();
+            $.post("addvaloracion", formValue, function(data) {
+                $("#result2").html(data);
+            });
+        });
+    });
+</script>
 <%
     String zapatoId = request.getParameter("id");
     Database db = new Database();
@@ -51,16 +73,33 @@
             <div class="container">
                 <h2>Review</h2>
                 <!-- Añadir aqui modify y delete -->
-                <form>
+                <form id="form1">
                     <div class="mb-2">
                         <input name="review" type="text" class="form-control w-25" id="review" value="<% out.print(valoracion.getCantidadEstrellas()); %>">
+                        <input name="description" type="text" class="form-control w-25" id="description" value="<% out.print(valoracion.getDescripcion()); %>">
                     </div>
+                    <input type="hidden" name="idUsuario" value="<%=currentUser.getIdUsuario()%>">
+                    <input type="hidden" name="idZapato" value="<%=zapato.getIdZapato()%>">
                 </form>
+                <div id="result1"></div>
+
+                <a href="deletevaloracion?id_usuario=<%= currentUser.getIdUsuario()%>id_zapato=<%= zapato.getIdZapato()%>" class="btn btn-secondary">Delete review</a>
             </div>
-            <!-- Añadir aqui add -->
             <%
                 } catch (Exception e) {
 
+            %>
+            <form id="form2">
+                <div class="mb-2">
+                    <label for="newreview" class="form-label">Review:</label>
+                    <input name="newreview" type="text" class="form-control w-25" id="newreview" value="">
+                    <input name="newdescription" type="text" class="form-control w-25" id="newdescription" value="">
+                </div>
+                <input type="hidden" name="idUsuario" value="<%=currentUser.getIdUsuario()%>">
+                <input type="hidden" name="idZapato" value="<%=zapato.getIdZapato()%>">
+            </form>
+            <div id="result2"></div>
+            <%
                 }
             %>
         </div>
