@@ -1,9 +1,6 @@
 package com.svalero.proyectojunio.servlet;
 
-import com.svalero.proyectojunio.dao.Database;
-import com.svalero.proyectojunio.dao.MarcaDao;
-import com.svalero.proyectojunio.dao.UsuarioDao;
-import com.svalero.proyectojunio.dao.ZapatoDao;
+import com.svalero.proyectojunio.dao.*;
 import com.svalero.proyectojunio.domain.Marca;
 import com.svalero.proyectojunio.domain.Usuario;
 import com.svalero.proyectojunio.domain.Zapato;
@@ -25,25 +22,20 @@ public class EditValoracionServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        Database database = new Database();
-        UsuarioDao userDao = new UsuarioDao(database.getConnection());
 
         //Comprobar login usuario
         Usuario currentUser = (Usuario) request.getSession().getAttribute("currentUser");
         if (currentUser == null) {
             response.sendRedirect("login.jsp");
         }
-
-        // TODO: TRAER EL ZAPATO O EL ID DE ZAPATO (EN ESE CASO CAMBIAR METODO)
+        String codeEmail = request.getParameter("codeemail");
+        String codeUser = request.getParameter("codeuser");
+        Database database = new Database();
+        ValoracionDao valDao = new ValoracionDao(database.getConnection());
 
         try {
-            userDao.modify(email, user);
-
-            //Volvemos a asignar el currentuser con los datos de usuario modificados
-            Optional<Usuario> newUser = userDao.login(username, password);
-            HttpSession session = request.getSession(true);
-            session.setAttribute("currentUser", newUser.get());
-            out.println("<br><div class='alert alert-success' role='alert'>User data edited succesfully.</div>");
+            valDao.modify(codeEmail, codeUser);
+            out.println("<br><div class='alert alert-success' role='alert'>Rating data edited succesfully.</div>");
         } catch (SQLException sqle) {
             out.println("<br><div class='alert alert-danger' role='alert'>Something went wrong. Please try again in a few minutes.</div>");
         }
