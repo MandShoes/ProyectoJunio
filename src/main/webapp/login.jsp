@@ -1,6 +1,14 @@
+<%@ page import="com.svalero.proyectojunio.domain.Usuario" %>
 <%@ page language="java"
          contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"
+%>
+
+<%
+    Usuario currentUser = (Usuario) session.getAttribute("currentUser");
+    if (currentUser != null) {
+        response.sendRedirect("index.jsp");
+    }
 %>
 <!doctype html>
 <html lang="en">
@@ -42,7 +50,7 @@
 
         <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
         <br><br><br>
-        <a class="w-200 btn btn-lg btn-primary" href="registrarusuario.jsp">Don't have an account? Create one here</a>
+        <a class="w-200 btn btn-lg btn-primary" href="userregister.jsp">Don't have an account? Create one here</a>
         <p class="mt-5 mb-3 text-muted">Shoes and Sneakers for Fussy Feet</p>
     </form>
 </main>
