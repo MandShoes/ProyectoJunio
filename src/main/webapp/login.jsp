@@ -4,12 +4,6 @@
          pageEncoding="UTF-8"
 %>
 
-<%
-    Usuario currentUser = (Usuario) session.getAttribute("currentUser");
-    if (currentUser != null) {
-        response.sendRedirect("index.jsp");
-    }
-%>
 <!doctype html>
 <html lang="en">
 <head>

@@ -2,9 +2,9 @@
 <%@ page import="com.svalero.proyectojunio.domain.Usuario" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.sql.SQLException" %>
-<%@ page import="com.svalero.proyectojunio.dao.UsuarioDao" %>
 <%@ page import="com.svalero.proyectojunio.dao.ZapatoDao" %>
 <%@ page import="com.svalero.proyectojunio.domain.Zapato" %>
+<%@ page import="org.apache.commons.lang.StringUtils" %>
 <%
     Usuario currentUser = (Usuario) session.getAttribute("currentUser");
     if (currentUser == null) {
@@ -20,7 +20,7 @@
 <div class="container">
     <h2>All available shoes currently on the store.</h2>
 
-    <!-- Buscador de viajes -->
+    <!-- Buscador de zapatos -->
     <div class="container-fluid" style="margin:0 auto; margin-bottom:30px ! important">
         <form class="d-flex" method="post" action="zapatos.jsp">
           <input class="form-control me-2" name="searchtext" id="searchtext" type="search" placeholder="Buscar viaje por destino" aria-label="Search">
@@ -81,6 +81,7 @@
                 }
         %>
     </ul>
+</div>
 </div>
 </body>
 </html>
