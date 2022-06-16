@@ -31,9 +31,9 @@
                 for (Marca marca: marcas) {
         %>
         <li class="list-group-item">
-            <a target="_blank" style="display: inline-flex; padding: 10px 20px" href="zapatospormarca.jsp?id=<%marca.getIdMarca(); %><%= marca.getNombre() %>"></a>
+            <a target="_blank" style="display: inline-flex; padding: 10px 20px" href="zapatospormarca.jsp?id=<%= marca.getIdMarca() %>"><%= marca.getNombre() %></a>
             <img src="logos/<%= marca.getLogo() %>" class="card-img-top" alt="imagen" style="margin-bottom:20px ! important; width:310px ! important; height:230px ! important">
-            <p><%= marca.getDescripcion() %> %> </p>
+            <p><%= marca.getDescripcion()  %> </p>
         </li>
         <%
             }
