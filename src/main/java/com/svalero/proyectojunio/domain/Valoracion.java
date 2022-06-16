@@ -23,6 +23,11 @@ public class Valoracion {
         this.zapato = zapato;
     }
 
+    public Valoracion(Usuario usuario, Zapato zapato){
+        this.usuario = usuario;
+        this.zapato = zapato;
+    }
+
     public int getCantidadEstrellas() {
         return cantidadEstrellas;
     }

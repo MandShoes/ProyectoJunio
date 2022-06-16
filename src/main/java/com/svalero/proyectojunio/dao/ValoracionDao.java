@@ -45,12 +45,13 @@ public class ValoracionDao {
         return rows == 1;
     }
 
-    public Optional<Valoracion> findById(int id) throws SQLException {
-        String sql = "SELECT * FROM VALORACIONES WHERE id_zapato = ?";
+    public Optional<Valoracion> findById(int id_zapato, int id_usuario) throws SQLException {
+        String sql = "SELECT * FROM VALORACIONES WHERE id_zapato = ? AND id_usuario = ?";
         Valoracion valoracion = null;
 
         PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setInt(1, id);
+        statement.setInt(1, id_zapato);
+        statement.setInt(2, id_usuario);
         ResultSet resultSet = statement.executeQuery();
         if (resultSet.next()) {
             valoracion = fromResultSet(resultSet);
