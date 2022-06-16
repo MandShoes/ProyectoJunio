@@ -36,7 +36,7 @@
     });
 </script>
 <%
-    String zapatoId = request.getParameter("id");
+    int zapatoId = Integer.parseInt(request.getParameter("id"));
     Database db = new Database();
     ZapatoDao zapatoDao = new ZapatoDao(db.getConnection());
     Zapato zapato;
@@ -45,7 +45,7 @@
         response.sendRedirect("login.jsp");
     }
     try {
-        Optional<Zapato> optionalZapato = zapatoDao.findById(Integer.parseInt(zapatoId));
+        Optional<Zapato> optionalZapato = zapatoDao.findById(zapatoId);
         zapato = optionalZapato.get();
 
 %>
