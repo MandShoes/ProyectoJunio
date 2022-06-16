@@ -86,6 +86,7 @@
                     </div>
                     <input type="hidden" name="idUsuario" value="<%=currentUser.getIdUsuario()%>">
                     <input type="hidden" name="idZapato" value="<%=zapato.getIdZapato()%>">
+                    <button type="submit" class="btn btn-primary">Modify Review</button>
                 </form>
                 <div id="result1"></div>
 
@@ -103,6 +104,7 @@
                 </div>
                 <input type="hidden" name="idUsuario" value="<%=currentUser.getIdUsuario()%>">
                 <input type="hidden" name="idZapato" value="<%=zapato.getIdZapato()%>">
+                <button type="submit" class="btn btn-primary">Create Review</button>
             </form>
             <div id="result2"></div>
             <%
