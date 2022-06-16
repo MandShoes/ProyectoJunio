@@ -40,7 +40,7 @@
     $("form").on("submit", function(event) {
       event.preventDefault();
       var formValue = $(this).serialize();
-      $.post("AddUserServlet", formValue, function(data) {
+      $.post("register", formValue, function(data) {
         $("#result").html(data);
       });
     });
