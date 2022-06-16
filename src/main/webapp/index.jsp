@@ -13,6 +13,7 @@
 %>
 
 <html lang="en">
+<link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/">
 <link rel="stylesheet" href="css/ada.css">
 
 <body>

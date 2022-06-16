@@ -8,34 +8,17 @@
          pageEncoding="UTF-8"
 %>
 
-<%
-  String textButton = "";
-  String userId = request.getParameter("id");
-  Usuario user = null;
-  if (userId != null) {
-    textButton = "Modificar";
-    Database db = new Database();
-    UsuarioDao usuarioDao = new UsuarioDao(db.getConnection());
-    try {
-      Optional<Usuario> optionalUsuario = usuarioDao.findById(Integer.parseInt(userId));
-      user = optionalUsuario.get();
-    } catch (SQLException sqle) {
-      sqle.printStackTrace();
-    }
-  } else {
-    textButton = "Registrar";
-  }
-%>
+<html lang="es">
+  <head>
+    <title>Create new user</title>
+    <!--"estilos bootstrap"--><link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/">
+    <link href="css/login.css" rel="stylesheet">
+    <!--"estilos bootstrap"--><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <meta name="theme-color" content="#7952b3">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
 
-<html>
-<head>
-  <link rel="stylesheet" href="css/ada.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <title>Creating a New User</title>
-
-</head>
-<body>
+<body class="text-center">
 <script type="text/javascript">
   $(document).ready(function() {
     $("form").on("submit", function(event) {
@@ -49,31 +32,40 @@
 </script>
 
 <div class="container">
-  <h2>New Account</h2>
+  <main class="form-signin">
   <form>
-    <div class="mb-2">
-      <label for="nombre" class="form-label">Name:</label>
-      <input name="nombre" type="text" class="form-control w-25" id="nombre" value="<% if (user != null) out.print(user.getNombre()); %>">
+        <h1 class="h3 mb-3 fw-normal">New Account</h1>
+        <br>
+      <div class="form-floating">
+         <label for="nombre" class="form-label">Name:</label>
+         <input name="nombre" type="text" class="form-control w-25" id="nombre">
+      </div>
+      <br>
+      <div class="form-floating">
+        <label for="email" class="form-label">Email:</label>
+        <input name="email" type="text" class="form-control w-25" id="email">
+       </div>
+       <br>
+      <div class="form-floating">
+         <label for="contrasena" class="form-label">Password:</label>
+         <input name="contrasena" type="text" class="form-control w-25" id="contrasena">
+      </div>
+      <br>
+      <div class="form-floating">
+         <input type="text" name="password" class="form-control" id="floatingInput" placeholder="Contraseña">
+         <label for="floatingInput">Contraseña</label>
+      </div>
+      <br>
+      <div class="form-floating">
+               <input type="text" name="password" class="form-control" id="floatingInput" placeholder="Contraseña">
+               <label for="floatingInput">Contraseña</label>
+      </div>
+      <br>
+      <button type="submit" class="w-100 btn btn-lg btn-warning">Create user</button>
+      <a type="button" class="btn btn-link" href="login.jsp" role="button">Go to sign in</a>
+    </form>
+    <div id="result"></div>
     </div>
-    <div class="mb-2">
-      <label for="contrasena" class="form-label">Password:</label>
-      <input name="contrasena" type="text" class="form-control w-25" id="contrasena" value="<% if (user != null) out.print(user.getContrasena()); %>">
-    </div>
-    <div class="mb-3">
-      <label for="email" class="form-label">Email:</label>
-      <input name="email" type="text" class="form-control w-25" id="email" value="<% if (user != null) out.print(user.getEmail()); %>">
-    </div>
-    <div class="mb-2">
-      <label for="direccion" class="form-label">Address:</label>
-      <input name="direccion" type="text" class="form-control w-25" id="direccion" value="<% if (user != null) out.print(user.getDireccion()); %>">
-    </div>
+    </main>
 
-    <input type="hidden" name="action" value="<% if (user != null) out.print("modify"); else out.print("register"); %>">
-    <input type="hidden" name="idUsuario" value="<% if (user != null) out.print(user.getIdUsuario()); %>">
-    <button type="submit" class="btn btn-primary"><%= textButton %></button>
-  </form>
-  <div id="result"></div>
-</div>
-</body>
-</html>
 
