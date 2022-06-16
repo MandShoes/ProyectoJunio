@@ -12,7 +12,7 @@
     String zapatoId = request.getParameter("id");
     Database db = new Database();
     ZapatoDao zapatoDao = new ZapatoDao(db.getConnection());
-    Zapato zapato = null;
+    Zapato zapato;
     try {
         Optional<Zapato> optionalZapato = zapatoDao.findById(Integer.parseInt(zapatoId));
         zapato = optionalZapato.get();

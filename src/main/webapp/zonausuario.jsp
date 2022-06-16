@@ -81,14 +81,10 @@
 
             <div class="col">
                 <div class="card shadow-sm">
-                    <img src="images/trip<%=compra.getZapato().getDestination().getId() %>.jpg" class="card-img-top" alt="imagen" style="margin-bottom:20px ! important; width:100% ! important; height:250px ! important">
                     <div class="card-body">
-                        <h5 class="card-text"><%=booking.getTrip().getDestination().getName() %></h5>
-                        <h6 class="card-text">Del <%=booking.getTrip().getStartDate() %> al <%=booking.getTrip().getEndDate() %></h6>
-                        <p class="text-muted" style"font-size:12px ! important">Nº reserva: <%=booking.getCode() %></p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <small class="text-muted" style="font-size:12px ! important">Fecha reserva: <%=booking.getBookingDate() %></small>
-                            <a href="delete-booking?code=<%= booking.getCode() %>" class="btn btn-sm btn-danger">Cancelar</a>
+                        <h5 class="card-text"><%=compra.getZapato().getModelo() %></h5>
+                        <h6 class="card-text"><%=compra.getZapato().getColor() %></h6>
+                        <p class="text-muted" style:font-size:12px ! important><%=compra.getZapato().getPrecio() %></p>
                         </div>
                     </div>
                 </div>
@@ -107,4 +103,3 @@
     </div>
     </div>
 </main>
-<jsp:include page="footer.jsp" />

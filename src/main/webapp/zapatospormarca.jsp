@@ -28,7 +28,7 @@
             ZapatoDao zapatoDao = new ZapatoDao(database.getConnection());
 
               try {
-                List<Zapato> zapatos = zapatoDao.findAllByBrand(marcaId);
+                List<Zapato> zapatos = zapatoDao.findAllByBrand(Integer.parseInt(marcaId));
                 for (Zapato zapato: zapatos) {
         %>
         <li class="list-group-item">
@@ -43,7 +43,7 @@
             Something went wrong, please try again in a few minutes.
         </div>
         <%
-            }
+        }%>
 
     </ul>
 </div>
