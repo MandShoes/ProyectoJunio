@@ -23,7 +23,6 @@
     <h2>Navigate between the brands to choose the best shoe for your feet.</h2>
     <ul class="list-group">
         <%
-            // TODO: falta hacer que cuando pulses una marca te salgan todas las zapatillas de esa marca.
             Database database = new Database();
             MarcaDao marcaDao = new MarcaDao(database.getConnection());
             try {
@@ -31,11 +30,9 @@
                 for (Marca marca: marcas) {
         %>
         <li class="list-group-item">
-            <a target="_blank" href="zapatospormarca.jsp?id=<%marca.getIdMarca(); %>
-            <%= marca.getNombre() %>">
-            </a>
+            <a target="_blank" href="zapatospormarca.jsp?id=<%marca.getIdMarca(); %><%= marca.getNombre() %>"></a>
             <img src="logos/<%= marca.getLogo() %>" class="card-img-top" alt="imagen" style="margin-bottom:20px ! important; width:310px ! important; height:230px ! important">
-            <p><%= marca.getDescripcion() %> - <%= marca.getDireccionSede() %> </p>
+            <p><%= marca.getDescripcion() %> %> </p>
         </li>
         <%
             }
