@@ -42,7 +42,7 @@ public class ZapatoDao {
     }
     public List<Zapato> findAll() throws SQLException {
         String sql = "SELECT * FROM ZAPATOS ORDER BY nombre";
-        List<Zapato> zapatos = new List<>();
+        List<Zapato> zapatos = new ArrayList<>();
 
         PreparedStatement statement = connection.prepareStatement(sql);
         ResultSet resultSet = statement.executeQuery();
