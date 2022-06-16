@@ -1,6 +1,5 @@
 package com.svalero.proyectojunio.domain;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 public class Valoracion {
@@ -41,21 +40,12 @@ public class Valoracion {
         return descripcion;
     }
 
-
-    public Zapato getZapato() {
-        return zapato;
-    }
-
     public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    public void setZapato(Zapato zapato) {
-        this.zapato = zapato;
+    public Zapato getZapato() {
+        return zapato;
     }
 
     public void setCantidadEstrellas(int cantidadEstrellas) {
@@ -68,5 +58,13 @@ public class Valoracion {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public void setZapato(Zapato zapato) {
+        this.zapato = zapato;
     }
 }

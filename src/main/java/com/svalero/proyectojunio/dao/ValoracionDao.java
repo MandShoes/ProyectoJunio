@@ -2,9 +2,11 @@ package com.svalero.proyectojunio.dao;
 
 import com.svalero.proyectojunio.domain.*;
 
-import java.sql.*;
-import java.time.LocalDate;
-import java.time.ZoneId;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Date;
 import java.util.Optional;
 
 public class ValoracionDao {
@@ -21,7 +23,7 @@ public class ValoracionDao {
         connection.setAutoCommit(false);
 
         PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setDate(1, date);
+        statement.setDate(1, new java.sql.Date(date.getTime()));
         statement.setInt(2, cantidadEstrellas);
         statement.setString(3, descripcion);
         statement.setInt(4, idUsuario);
@@ -37,7 +39,7 @@ public class ValoracionDao {
 
         PreparedStatement statement = connection.prepareStatement(sql);
 
-        statement.setDate(1, valoracion.getFechaValoracion());
+        statement.setDate(1, new java.sql.Date(valoracion.getFechaValoracion().getTime()));
         statement.setInt(2, valoracion.getCantidadEstrellas());
         statement.setString(3, valoracion.getDescripcion());
         statement.setInt(4, idUsuario);
@@ -75,7 +77,7 @@ public class ValoracionDao {
     private Valoracion fromResultSet(ResultSet resulset) throws SQLException {
         Valoracion valoracion = new Valoracion();
 
-        valoracion.setFechaValoracion(new resulset.getDate("fecha_valoracion"));
+        valoracion.setFechaValoracion(resulset.getDate("fecha_valoracion"));
         valoracion.setCantidadEstrellas(resulset.getInt("cantidad_estrellas"));
         valoracion.setDescripcion(resulset.getString("descripcion"));
 
