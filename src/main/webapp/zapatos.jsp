@@ -51,8 +51,8 @@
             <p><%= zapato.getMarca() %> - <%= zapato.getColor() %> | <%= zapato.getPrecio() %> </p>
         </li>
         <%
-            }
-        } catch (SQLException sqle) {
+                }
+            } catch (SQLException sqle) {
         %>
         <div class="alert alert-danger" role="alert">
             Something went wrong, please try again in a few minutes.
@@ -63,23 +63,23 @@
 
          // Acceder a la bbdd y recuperar todos los zapatos filtrados por buscador
          try {
-                         List<Zapato> zapatos = zapatoDao.findAll(searchtext);
-                         for (Zapato zapato: zapatos) {
-                 %>
-                 <li class="list-group-item">
-                     <a target="_blank" href="zapato.jsp?id=<%= zapato.getIdZapato() %>"><%= zapato.getModelo() %></a>
-                     <p><%= zapato.getMarca() %> - <%= zapato.getColor() %> | <%= zapato.getPrecio() %> </p>
-                 </li>
-                 <%
-                     }
-                 } catch (SQLException sqle) {
-                 %>
-                 <div class="alert alert-danger" role="alert">
-                     Something went wrong, please try again in a few minutes.
-                 </div>
-                 <%
-                     }
-                }
+             List<Zapato> zapatos = zapatoDao.findAll(searchtext);
+             for (Zapato zapato: zapatos) {
+        %>
+        <li class="list-group-item">
+            <a target="_blank" href="zapato.jsp?id=<%= zapato.getIdZapato() %>"><%= zapato.getModelo() %></a>
+            <p><%= zapato.getMarca() %> - <%= zapato.getColor() %> | <%= zapato.getPrecio() %> </p>
+        </li>
+        <%
+             }
+         } catch (SQLException sqle) {
+        %>
+        <div class="alert alert-danger" role="alert">
+            Something went wrong, please try again in a few minutes.
+        </div>
+        <%
+         }
+            }
         %>
     </ul>
 </div>

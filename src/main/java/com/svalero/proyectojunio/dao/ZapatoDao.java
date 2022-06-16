@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class ZapatoDao {
@@ -39,9 +40,9 @@ public class ZapatoDao {
         connection.commit();
         connection.setAutoCommit(true);
     }
-    public ArrayList<Zapato> findAll() throws SQLException {
+    public List<Zapato> findAll() throws SQLException {
         String sql = "SELECT * FROM ZAPATOS ORDER BY nombre";
-        ArrayList<Zapato> zapatos = new ArrayList<>();
+        List<Zapato> zapatos = new List<>();
 
         PreparedStatement statement = connection.prepareStatement(sql);
         ResultSet resultSet = statement.executeQuery();

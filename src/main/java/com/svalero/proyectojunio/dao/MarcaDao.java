@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class MarcaDao {
@@ -29,7 +30,7 @@ public class MarcaDao {
         statement.executeUpdate();
     }
 
-    public ArrayList<Marca> findAll() throws SQLException {
+    public List<Marca> findAll() throws SQLException {
         String sql = "SELECT * FROM MARCAS ORDER BY nombre";
         ArrayList<Marca> marcas = new ArrayList<>();
 
