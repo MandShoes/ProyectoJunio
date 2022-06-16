@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.Optional;
-
+/*
 @WebServlet("/editvaloracion")
 public class EditValoracionServlet extends HttpServlet {
 
@@ -41,3 +41,5 @@ public class EditValoracionServlet extends HttpServlet {
         }
     }
 }
+
+ */
