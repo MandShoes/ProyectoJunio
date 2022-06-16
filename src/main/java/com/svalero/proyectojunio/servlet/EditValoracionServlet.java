@@ -3,6 +3,7 @@ package com.svalero.proyectojunio.servlet;
 import com.svalero.proyectojunio.dao.*;
 import com.svalero.proyectojunio.domain.Marca;
 import com.svalero.proyectojunio.domain.Usuario;
+import com.svalero.proyectojunio.domain.Valoracion;
 import com.svalero.proyectojunio.domain.Zapato;
 
 import javax.servlet.ServletException;
@@ -28,13 +29,14 @@ public class EditValoracionServlet extends HttpServlet {
         if (currentUser == null) {
             response.sendRedirect("login.jsp");
         }
-        String codeEmail = request.getParameter("codeemail");
-        String codeUser = request.getParameter("codeuser");
+        int idUsuario = Integer.parseInt(request.getParameter("id_usuario"));
+        int idZapato = Integer.parseInt(request.getParameter("id_zapato"));
         Database database = new Database();
         ValoracionDao valDao = new ValoracionDao(database.getConnection());
+        Valoracion valoracion = new Valoracion(idUsuario, idZapato);
 
         try {
-            valDao.modify(codeEmail, codeUser);
+            valDao.modify(id_usuario, id_zapato, valoracion);
             out.println("<br><div class='alert alert-success' role='alert'>Rating data edited succesfully.</div>");
         } catch (SQLException sqle) {
             out.println("<br><div class='alert alert-danger' role='alert'>Something went wrong. Please try again in a few minutes.</div>");
