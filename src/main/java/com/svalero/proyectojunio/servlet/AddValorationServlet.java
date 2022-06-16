@@ -25,8 +25,8 @@ public class AddValorationServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
-        int cantidadEstrellas = Integer.parseInt(request.getParameter("review"));
-        String descripcion = request.getParameter("description");
+        int cantidadEstrellas = Integer.parseInt(request.getParameter("newreview"));
+        String descripcion = request.getParameter("newdescription");
         Date date = new Date(System.currentTimeMillis());
         int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
         int idZapato = Integer.parseInt(request.getParameter("idZapato"));
