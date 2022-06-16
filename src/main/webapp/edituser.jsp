@@ -39,7 +39,6 @@
     });
   });
 </script>
-<jsp:include page="header.jsp" />
 </header>
 
 <!-- Traemos los datos del usuario y permitimos modificarlos-->
@@ -69,4 +68,3 @@
   </form>
   <div id="result"></div>
 </main>
-<jsp:include page="footer.jsp" />

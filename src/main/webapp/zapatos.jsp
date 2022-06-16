@@ -43,7 +43,7 @@
             if (searchtext == null) {
 
               try {
-                ArrayList<Zapato> zapatos = zapatoDao.findAll();
+                List<Zapato> zapatos = zapatoDao.findAll();
                 for (Zapato zapato: zapatos) {
         %>
         <li class="list-group-item">
@@ -63,7 +63,7 @@
 
          // Acceder a la bbdd y recuperar todos los zapatos filtrados por buscador
          try {
-                         ArrayList<Zapato> zapatos = zapatoDao.findAll(searchtext);
+                         List<Zapato> zapatos = zapatoDao.findAll(searchtext);
                          for (Zapato zapato: zapatos) {
                  %>
                  <li class="list-group-item">

@@ -33,6 +33,7 @@ public class AddUserServlet extends HttpServlet {
         try {
             userDao.add(user);
             out.println("<br><div class='alert alert-success' role='alert'>User was correctly created.</div>");
+            response.sendRedirect("login.jsp");
         } catch (EmailAlreadyExistException eaee) {
             out.println("<br><div class='alert alert-danger' role='alert'>Email already registered.</div>");
             eaee.printStackTrace();
