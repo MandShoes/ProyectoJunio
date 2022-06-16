@@ -41,7 +41,7 @@ public class ZapatoDao {
         connection.setAutoCommit(true);
     }
     public List<Zapato> findAll() throws SQLException {
-        String sql = "SELECT * FROM ZAPATOS ORDER BY nombre";
+        String sql = "SELECT * FROM ZAPATOS ORDER BY modelo";
         List<Zapato> zapatos = new ArrayList<>();
 
         PreparedStatement statement = connection.prepareStatement(sql);
