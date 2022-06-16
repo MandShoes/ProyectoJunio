@@ -24,9 +24,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/ada.css">
 </head>
 
-</html>
+
 
 <!-- Datos del usuario logueado -->
 <main class="contenedor">
@@ -64,7 +65,6 @@
             <div>If you delete your account you won't be able to recover any shopping data you had stored, and your current orders will be canceled.</div>
         </div>
     </form>
-    </section>
 
     <div class="container">
         <h3 style="text-align:left">My Orders</h3>
@@ -102,3 +102,4 @@
     </div>
     </div>
 </main>
+</html>
