@@ -55,19 +55,20 @@ public class UsuarioDao {
         return rows == 1;
     }
 
-    public boolean modify(String email, Usuario user) throws SQLException {
-        String sql = "UPDATE USUARIOS SET nombre = ?, contrasena = ?, email = ?, direccion = ? WHERE email = ?";
+    public boolean modify(int idUsuario, Usuario user) throws SQLException {
+        String sql = "UPDATE USUARIOS SET nombre = ?, contrasena = ?, email = ?, direccion = ? WHERE id_usuario = ?";
 
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1, user.getNombre());
         statement.setString(2, user.getContrasena());
         statement.setString(3, user.getEmail());
         statement.setString(4, user.getDireccion());
+        statement.setInt(5, idUsuario);
         int rows = statement.executeUpdate();
         return rows == 1;
     }
 
-    public boolean modify(int id, Usuario user) throws SQLException {
+    /*public boolean modify(int id, Usuario user) throws SQLException {
         String sql = "UPDATE USUARIOS SET id_usuario = ?, nombre = ?, contrasena = ?, email = ?, direccion = ? WHERE id_usuario = ?";
 
         PreparedStatement statement = connection.prepareStatement(sql);
@@ -78,7 +79,7 @@ public class UsuarioDao {
         statement.setString(5, user.getDireccion());
         int rows = statement.executeUpdate();
         return rows == 1;
-    }
+    }*/
 
     public ArrayList<Usuario> findAll() throws SQLException {
         String sql = "SELECT * FROM USUARIOS ORDER BY nombre";

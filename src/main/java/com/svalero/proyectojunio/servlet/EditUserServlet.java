@@ -28,20 +28,21 @@ public class EditUserServlet extends HttpServlet {
             response.sendRedirect("login.jsp");
         }
 
-        String name = request.getParameter("nombre");
-        String password = request.getParameter("contrasena");
+        String nombre = request.getParameter("nombre");
+        String contrasena = request.getParameter("contrasena");
         String email = request.getParameter("email");
-        String address = request.getParameter("direccion");
-        String userId = String.valueOf(currentUser.getIdUsuario());
-        Usuario user = new Usuario(name, password, email, address);
+        String direccion = request.getParameter("direccion");
+        int idUsuario = currentUser.getIdUsuario();
+
+        Usuario user = new Usuario(nombre, contrasena, email, direccion);
 
         Database database = new Database();
         UsuarioDao userDao = new UsuarioDao(database.getConnection());
         try {
-            userDao.modify(email, user);
+            userDao.modify(idUsuario, user);
 
             //Volvemos a asignar el currentuser con los datos de usuario modificados
-            Optional<Usuario> newUser = userDao.login(name, password);
+            Optional<Usuario> newUser = userDao.login(nombre, contrasena);
             HttpSession session = request.getSession(true);
             session.setAttribute("currentUser", newUser.get());
             out.println("<br><div class='alert alert-success' role='alert'>User data edited succesfully.</div>");
