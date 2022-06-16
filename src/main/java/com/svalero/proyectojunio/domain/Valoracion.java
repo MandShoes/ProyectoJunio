@@ -1,11 +1,12 @@
 package com.svalero.proyectojunio.domain;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public class Valoracion {
 
     private int cantidadEstrellas;
-    private LocalDate fechaValoracion;
+    private Date fechaValoracion;
     private String descripcion;
 
     private Usuario usuario;
@@ -15,7 +16,7 @@ public class Valoracion {
     public Valoracion() {
     }
 
-    public Valoracion(int cantidadEstrellas, LocalDate fechaValoracion, String descripcion, Usuario usuario, Zapato zapato) {
+    public Valoracion(int cantidadEstrellas, Date fechaValoracion, String descripcion, Usuario usuario, Zapato zapato) {
         this.cantidadEstrellas = cantidadEstrellas;
         this.fechaValoracion = fechaValoracion;
         this.descripcion = descripcion;
@@ -32,7 +33,7 @@ public class Valoracion {
         return cantidadEstrellas;
     }
 
-    public LocalDate getFechaValoracion() {
+    public Date getFechaValoracion() {
         return fechaValoracion;
     }
 
@@ -61,7 +62,7 @@ public class Valoracion {
         this.cantidadEstrellas = cantidadEstrellas;
     }
 
-    public void setFechaValoracion(LocalDate fechaValoracion) {
+    public void setFechaValoracion(Date fechaValoracion) {
         this.fechaValoracion = fechaValoracion;
     }
 
