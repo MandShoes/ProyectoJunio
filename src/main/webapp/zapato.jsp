@@ -3,6 +3,9 @@
 <%@ page import="com.svalero.proyectojunio.dao.Database" %>
 <%@ page import="com.svalero.proyectojunio.domain.Zapato" %>
 <%@ page import="com.svalero.proyectojunio.dao.ZapatoDao" %>
+<%@ page import="com.svalero.proyectojunio.domain.Usuario" %>
+<%@ page import="com.svalero.proyectojunio.domain.Valoracion" %>
+<%@ page import="com.svalero.proyectojunio.dao.ValoracionDao" %>
 <html>
 <head>
     <link rel="stylesheet" href="css/ada.css">
@@ -14,6 +17,10 @@
     Database db = new Database();
     ZapatoDao zapatoDao = new ZapatoDao(db.getConnection());
     Zapato zapato;
+    Usuario currentUser = (Usuario) session.getAttribute("currentUser");
+    if (currentUser == null) {
+        response.sendRedirect("login.jsp");
+    }
     try {
         Optional<Zapato> optionalZapato = zapatoDao.findById(Integer.parseInt(zapatoId));
         zapato = optionalZapato.get();
@@ -23,7 +30,7 @@
     <div class="card text-center">
         <div class="card-header">
             <p><%= zapato.getModelo()%></p> - <p><%= zapato.getColor()%></p> - <p><%= zapato.getSexoZapato()%></p>
-            <p><%= zapato.getMarca()%></p>
+            <p><%= zapato.getMarca().getNombre()%></p>
         </div>
         <div class="card-body">
             <p class="card-text"><%= zapato.getDescripcion() %></p>
@@ -32,7 +39,30 @@
                 <option value="1"><%= zapato.getNumero()%></option>
             </select>
 
-            <p class="card-text">Proveedor: <%= zapato.getProveedor()%>.</p>
+            <p class="card-text">Proveedor: <%= zapato.getProveedor().getNombre()%>.</p>
+
+            <%
+                ValoracionDao valDao = new ValoracionDao(db.getConnection());
+                Valoracion valoracion = null;
+                try {
+                    Optional<Valoracion> optionalValoracion = valDao.findById(Integer.parseInt(zapatoId), currentUser.getIdUsuario());
+                    valoracion = optionalValoracion.orElseThrow(Exception::new);
+            %>
+            <div class="container">
+                <h2>Review</h2>
+                <!-- Añadir aqui modify y delete -->
+                <form>
+                    <div class="mb-2">
+                        <input name="review" type="text" class="form-control w-25" id="review" value="<% out.print(valoracion.getCantidadEstrellas()); %>">
+                    </div>
+                </form>
+            </div>
+            <!-- Añadir aqui add -->
+            <%
+                } catch (Exception e) {
+
+                }
+            %>
         </div>
     </div>
 </div>
