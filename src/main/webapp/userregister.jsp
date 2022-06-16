@@ -37,28 +37,24 @@
         <h1 class="h3 mb-3 fw-normal">New Account</h1>
         <br>
       <div class="form-floating">
-         <label for="nombre" class="form-label">Name:</label>
-         <input name="nombre" type="text" class="form-control w-25" id="nombre">
+          <input type="text" name="nombre" class="form-control" id="floatingInput" placeholder="Name">
+          <label for="floatingInput">Name</label>
+
       </div>
       <br>
       <div class="form-floating">
-        <label for="email" class="form-label">Email:</label>
-        <input name="email" type="text" class="form-control w-25" id="email">
+            <input type="text" name="email" class="form-control" id="floatingInput" placeholder="Email">
+            <label for="floatingInput">Email</label>
        </div>
        <br>
       <div class="form-floating">
-         <label for="contrasena" class="form-label">Password:</label>
-         <input name="contrasena" type="text" class="form-control w-25" id="contrasena">
+          <input type="text" name="contrasena" class="form-control" id="floatingInput" placeholder="Password">
+           <label for="floatingInput">Password</label>
       </div>
       <br>
       <div class="form-floating">
-         <input type="text" name="password" class="form-control" id="floatingInput" placeholder="Contraseña">
-         <label for="floatingInput">Contraseña</label>
-      </div>
-      <br>
-      <div class="form-floating">
-               <input type="text" name="password" class="form-control" id="floatingInput" placeholder="Contraseña">
-               <label for="floatingInput">Contraseña</label>
+         <input type="text" name="direccion" class="form-control" id="floatingInput" placeholder="Password">
+         <label for="floatingInput">Password</label>
       </div>
       <br>
       <button type="submit" class="w-100 btn btn-lg btn-warning">Create user</button>

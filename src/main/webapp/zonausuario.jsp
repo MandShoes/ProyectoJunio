@@ -28,7 +28,8 @@
 </head>
 
 
-
+<body>
+<jsp:include page="header.jsp" />
 <!-- Datos del usuario logueado -->
 <main class="contenedor">
     <h3>Your Profile</h3>
@@ -102,4 +103,6 @@
     </div>
     </div>
 </main>
+</body>
+<jsp:include page="footer.jsp" />
 </html>
