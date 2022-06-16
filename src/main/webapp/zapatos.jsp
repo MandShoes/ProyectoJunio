@@ -31,16 +31,14 @@
 
     <ul class="list-group">
         <%
-            String searchtextOld = request.getParameter("searchtext");
-            String searchtext = StringUtils.lowerCase(searchtextOld);
-
+            String searchText = request.getParameter("searchtext");
+            searchText = StringUtils.lowerCase(searchText);
 
             Database database = new Database();
             ZapatoDao zapatoDao = new ZapatoDao(database.getConnection());
 
             // Si no hay nada en el buscador, acceder a la bbdd y recuperar todos los zapatos
-            if (searchtext == null) {
-
+            if (searchText == null) {
               try {
                 List<Zapato> zapatos = zapatoDao.findAll();
                 for (Zapato zapato: zapatos) {
@@ -62,7 +60,7 @@
 
          // Acceder a la bbdd y recuperar todos los zapatos filtrados por buscador
          try {
-             List<Zapato> zapatos = zapatoDao.findAll(searchtext);
+             List<Zapato> zapatos = zapatoDao.findAll(searchText);
              for (Zapato zapato: zapatos) {
         %>
         <li class="list-group-item">
