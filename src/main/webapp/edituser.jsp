@@ -49,19 +49,19 @@
       <legend>Change your data here</legend>
       <div class="mb-3">
         <label for="nombre" class="form-label">Name</label>
-        <input type="text" id="nombre" class="form-control" value="<%= currentUser.getNombre() %>">
+        <input type="text" name="nombre" id="nombre" class="form-control" value="<%= currentUser.getNombre() %>">
       </div>
       <div class="mb-3">
         <label for="contrasena" class="form-label">Password</label>
-        <input type="password" id="contrasena" class="form-control" value="<%= currentUser.getContrasena() %>">
+        <input type="password" name="contrasena" id="contrasena" class="form-control" value="<%= currentUser.getContrasena() %>">
       </div>
       <div class="mb-3">
         <label for="email" class="form-label">Email</label>
-        <input type="text" id="email" class="form-control" value="<%= currentUser.getEmail() %>">
+        <input type="text" name="email" id="email" class="form-control" value="<%= currentUser.getEmail() %>">
       </div>
       <div class="mb-3">
         <label for="direccion" class="form-label">Address</label>
-        <input type="text" id="direccion" class="form-control" value="<%= currentUser.getDireccion() %>">
+        <input type="text" name="direccion" id="direccion" class="form-control" value="<%= currentUser.getDireccion() %>">
       </div>
     </fieldset>
     <button type="submit" class="btn btn-warning">Guardar</button>
