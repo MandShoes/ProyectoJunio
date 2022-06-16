@@ -5,7 +5,6 @@
 <%@ page import="com.svalero.proyectojunio.dao.ZapatoDao" %>
 <%@ page import="com.svalero.proyectojunio.domain.Zapato" %>
 <%@ page import="org.apache.commons.lang.StringUtils" %>
-<%@ page import="java.util.ArrayList" %>
 <%
     Usuario currentUser = (Usuario) session.getAttribute("currentUser");
     if (currentUser == null) {
