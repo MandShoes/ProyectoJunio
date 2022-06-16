@@ -12,6 +12,9 @@
     }
 %>
 
+<html lang="en">
+<link rel="stylesheet" href="css/ada.css">
+
 <body>
 <div class="container">
     <h2>AdmandShoes - Let your feet enjoy freedom</h2>
