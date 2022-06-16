@@ -5,6 +5,7 @@
 <%@ page import="com.svalero.proyectojunio.dao.ZapatoDao" %>
 <%@ page import="com.svalero.proyectojunio.domain.Zapato" %>
 <%@ page import="org.apache.commons.lang.StringUtils" %>
+<%@ page import="java.util.ArrayList" %>
 <%
     Usuario currentUser = (Usuario) session.getAttribute("currentUser");
     if (currentUser == null) {
@@ -23,7 +24,7 @@
     <!-- Buscador de zapatos -->
     <div class="container-fluid" style="margin:0 auto; margin-bottom:30px ! important">
         <form class="d-flex" method="post" action="zapatos.jsp">
-          <input class="form-control me-2" name="searchtext" id="searchtext" type="search" placeholder="Buscar viaje por destino" aria-label="Search">
+          <input class="form-control me-2" name="searchtext" id="searchtext" type="search" placeholder="Buscar zapatos por nombre, color..." aria-label="Search">
           <a class="btn btn-warning" type="submit">Search</a>
         </form>
       </div>
@@ -42,7 +43,7 @@
             if (searchtext == null) {
 
               try {
-                List<Zapato> zapatos = zapatoDao.findAll();
+                ArrayList<Zapato> zapatos = zapatoDao.findAll();
                 for (Zapato zapato: zapatos) {
         %>
         <li class="list-group-item">
@@ -60,9 +61,9 @@
             }
             } else {
 
-         // Acceder a la bbdd y recuperar todos los viajes filtrados por el buscador
+         // Acceder a la bbdd y recuperar todos los zapatos filtrados por buscador
          try {
-                         List<Zapato> zapatos = zapatoDao.findAll(searchtext);
+                         ArrayList<Zapato> zapatos = zapatoDao.findAll(searchtext);
                          for (Zapato zapato: zapatos) {
                  %>
                  <li class="list-group-item">
