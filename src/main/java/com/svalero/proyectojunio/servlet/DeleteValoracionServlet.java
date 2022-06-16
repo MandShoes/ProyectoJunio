@@ -11,24 +11,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 @WebServlet("/deletevaloracion")
 public class DeleteValoracionServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
 
         //Comprobar login usuario
         Usuario currentUser = (Usuario) request.getSession().getAttribute("currentUser");
         if (currentUser == null) {
             response.sendRedirect("login.jsp");
         }
+        String code = request.getParameter("code");
         Database database = new Database();
-        ValoracionDao valDao= new ValoracionDao(database.getConnection());
-        // TODO: TRAER EL ZAPATO O EL ID DE ZAPATO (EN ESE CASO CAMBIAR METODO)
+        ValoracionDao valDao = new ValoracionDao(database.getConnection());
         try {
-            valDao.delete(currentUser.getIdUsuario(), zapato);
-            response.sendRedirect("login.jsp");
+            valDao.delete(code);
+            response.sendRedirect("personalarea.jsp");
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         }

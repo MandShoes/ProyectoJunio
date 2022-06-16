@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Optional;
 
 public class CompraDao {
@@ -40,18 +41,19 @@ public class CompraDao {
         connection.commit();
         connection.setAutoCommit(true);
     }
-    public Optional<Compra> findById(int id) throws SQLException {
+    public ArrayList<Compra> findById(int id_usuario) throws SQLException {
         String sql = "SELECT * FROM COMPRAS WHERE id_usuario = ?";
-        Compra compra = null;
+        ArrayList<Compra> compras = new ArrayList<>();
 
         PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setInt(1, id);
+        statement.setInt(1, id_usuario);
         ResultSet resultSet = statement.executeQuery();
-        if (resultSet.next()) {
-            compra = fromResultSet(resultSet);
+        while (resultSet.next()) {
+            Compra compra = fromResultSet(resultSet);
+            compras.add(compra);
         }
 
-        return Optional.ofNullable(compra);
+        return compras;
     }
     private Compra fromResultSet(ResultSet resulset) throws SQLException {
         Compra compra = new Compra();

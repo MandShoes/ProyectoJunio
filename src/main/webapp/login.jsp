@@ -32,11 +32,11 @@
         <h1 class="h3 mb-3 fw-normal">Login</h1>
 
         <div class="form-floating">
-            <input type="text" name="username" class="form-control" id="floatingInput" placeholder="User" value="...">
-            <label for="floatingInput">User</label>
+            <input type="text" name="email" class="form-control" id="floatingInput" placeholder="Email" value="">
+            <label for="floatingInput">Email</label>
         </div>
         <div class="form-floating">
-            <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" value="...">
+            <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" value="*****">
             <label for="floatingPassword">Password</label>
         </div>
 

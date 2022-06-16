@@ -20,13 +20,13 @@ import static java.lang.System.out;
 public class LoginServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String username = request.getParameter("nombre");
+        String email = request.getParameter("email");
         String password = request.getParameter("contrasena");
 
         Database database = new Database();
         UsuarioDao userDao = new UsuarioDao(database.getConnection());
         try {
-            Optional<Usuario> user = userDao.login(username, password);
+            Optional<Usuario> user = userDao.login(email, password);
             if (user.isPresent()) {
                 HttpSession session = request.getSession(true);
                 session.setAttribute("currentUser", user.get());

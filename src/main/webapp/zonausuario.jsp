@@ -27,7 +27,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 
-</header>
+</html>
 
 <!-- Datos del usuario logueado -->
 <main class="contenedor">
@@ -51,13 +51,10 @@
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
             <%
-                // Acceder a la base de datos y recuperar la información de reservas asociadas al usuario
-                // TODO: FIND ALL DE COMPRAS INTRODUCIENDO CURRENT USER
-                // TODO: REPENSAR COMO HACER LAS ORDERS
                 Database database = new Database();
                 CompraDao orderDao = new CompraDao(database.getConnection());
                 try {
-                    List<Compra> compras = CompraDao.findAll(currentUser);
+                    List<Compra> compras = orderDao.findById(currentUser.getIdUsuario());
                     for (Compra compra: compras) {
             %>
 
