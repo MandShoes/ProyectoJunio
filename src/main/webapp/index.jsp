@@ -20,17 +20,12 @@
         <%
             if ((currentUser != null)) {
         %>
-        <li><a href="buscarzapatos.jsp">Search between all available shoes</a></li>
-        <%
-            }
-            if (currentUser != null) {
-        %>
         <li><a href="marcas.jsp">Display all available brands</a></li>
         <%
             }
             if (currentUser != null) {
         %>
-        <li><a href="buscarmarcas.jsp">Search between all available brands</a></li>
+        <li><a href="zonausuario.jsp">Access your profile</a></li>
         <%
             }
             if (currentUser != null) {
@@ -42,7 +37,7 @@
     </ul>
     <br/>
     <div class="alert alert-success" role="alert">
-        You are logged on! Enjoy your stay, <% if (currentUser != null) out.print(currentUser.getNombre()); %>
+        You are logged on! Enjoy your stay, <% if (currentUser != null) out.print(currentUser.getNombre()); %><br>
     </div>
 </div>
 </body>

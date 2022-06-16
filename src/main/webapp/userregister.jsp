@@ -51,8 +51,8 @@
   <h2>New Account</h2>
   <form>
     <div class="mb-2">
-      <label for="usuario" class="form-label">Name:</label>
-      <input name="usuario" type="text" class="form-control w-25" id="usuario" value="<% if (user != null) out.print(user.getNombre()); %>">
+      <label for="nombre" class="form-label">Name:</label>
+      <input name="nombre" type="text" class="form-control w-25" id="nombre" value="<% if (user != null) out.print(user.getNombre()); %>">
     </div>
     <div class="mb-2">
       <label for="contrasena" class="form-label">Password:</label>
