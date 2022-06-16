@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class CompraDao {
@@ -41,9 +42,9 @@ public class CompraDao {
         connection.commit();
         connection.setAutoCommit(true);
     }
-    public ArrayList<Compra> findById(int id_usuario) throws SQLException {
+    public List<Compra> findById(int id_usuario) throws SQLException {
         String sql = "SELECT * FROM COMPRAS WHERE id_usuario = ?";
-        ArrayList<Compra> compras = new ArrayList<>();
+        List<Compra> compras = new ArrayList<>();
 
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setInt(1, id_usuario);
