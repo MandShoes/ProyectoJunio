@@ -6,6 +6,7 @@
 <%@ page import="com.svalero.proyectojunio.domain.Usuario" %>
 <%@ page import="com.svalero.proyectojunio.domain.Valoracion" %>
 <%@ page import="com.svalero.proyectojunio.dao.ValoracionDao" %>
+<%@ page import="java.util.function.Supplier" %>
 <html>
 <head>
     <link rel="stylesheet" href="css/ada.css">
@@ -68,7 +69,12 @@
                 Valoracion valoracion = null;
                 try {
                     Optional<Valoracion> optionalValoracion = valDao.findById(Integer.parseInt(zapatoId), currentUser.getIdUsuario());
-                    valoracion = optionalValoracion.orElseThrow(Exception::new);
+                    valoracion = optionalValoracion.orElseThrow(new Supplier<Throwable>() {
+                        @Override
+                        public Throwable get() {
+                            return new Exception();
+                        }
+                    });
             %>
             <div class="container">
                 <h2>Review</h2>
