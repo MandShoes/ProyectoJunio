@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
-import static org.graalvm.compiler.options.OptionType.User;
 
 @WebServlet("/register")
 public class AddUserServlet extends HttpServlet {
