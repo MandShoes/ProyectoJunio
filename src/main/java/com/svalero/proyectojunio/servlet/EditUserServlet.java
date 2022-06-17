@@ -42,9 +42,8 @@ public class EditUserServlet extends HttpServlet {
             userDao.modify(idUsuario, user);
 
             //Volvemos a asignar el currentuser con los datos de usuario modificados
-            Optional<Usuario> newUser = userDao.login(nombre, contrasena);
             HttpSession session = request.getSession(true);
-            session.setAttribute("currentUser", newUser.get());
+            session.setAttribute("currentUser", userDao.login(nombre, contrasena).get());
             out.println("<br><div class='alert alert-success' role='alert'>User data edited succesfully.</div>");
         } catch (SQLException sqle) {
             out.println("<br><div class='alert alert-danger' role='alert'>Something went wrong. Please try again in a few minutes.</div>");
