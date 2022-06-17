@@ -26,7 +26,7 @@
             event.preventDefault();
             var formValue = $(this).serialize();
             $.post("editvaloracion", formValue, function(data) {
-                if (data == "/AdmandShoes/index.jsp") {
+                if ($.trim(data) == "/AdmandShoes/index.jsp") {
                     window.location.href = data;
                 } else {
                     $("#result1").html(data);
@@ -41,7 +41,7 @@
             event.preventDefault();
             var formValue = $(this).serialize();
             $.post("addvaloracion", formValue, function(data) {
-                if (data == "/AdmandShoes/index.jsp") {
+                if ($.trim(data) == "/AdmandShoes/index.jsp") {
                     window.location.href = data;
                 } else {
                     $("#result2").html(data);
