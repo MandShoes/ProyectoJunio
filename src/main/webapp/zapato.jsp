@@ -83,12 +83,12 @@
                         <input name="description" type="text" class="form-control w-25" id="description" value="<% out.print(valoracion.getDescripcion()); %>">
                     </div>
                     <input type="hidden" name="idUsuario" value="<%=currentUser.getIdUsuario()%>">
-                    <input type="hidden" name="idZapato" value="<%=zapato.getIdZapato()%>">
+                    <input type="hidden" name="idZapato" value="<%=zapatoId%>">
                     <button type="submit" class="btn btn-primary">Modify Review</button>
                 </form>
                 <div id="result1"></div>
 
-                <a href="deletevaloracion?id_usuario=<%= currentUser.getIdUsuario()%>id_zapato=<%= zapato.getIdZapato()%>" class="btn btn-secondary">Delete review</a>
+                <a href="deletevaloracion?id_usuario=<%= currentUser.getIdUsuario()%>id_zapato=<%= zapatoId%>" class="btn btn-secondary">Delete review</a>
             </div>
             <%
                 } catch (Exception e) {
@@ -101,7 +101,7 @@
                     <input name="newdescription" type="text" class="form-control w-25" id="newdescription" value="">
                 </div>
                 <input type="hidden" name="idUsuario" value="<%=currentUser.getIdUsuario()%>">
-                <input type="hidden" name="idZapato" value="<%=zapato.getIdZapato()%>">
+                <input type="hidden" name="idZapato" value="<%=zapatoId%>">
                 <button type="submit" class="btn btn-primary">Create Review</button>
             </form>
             <div id="result2"></div>
