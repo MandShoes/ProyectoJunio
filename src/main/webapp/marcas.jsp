@@ -26,8 +26,7 @@
 <body>
 <jsp:include page="header.jsp" />
 <div class="container">
-    <h2>Navigate between the brands to choose the best shoe for your feet.</h2>
-    <ul class="list-group">
+    <h3>Navigate between the brands to choose the best shoe for your feet.</h3>
         <%
             Database database = new Database();
             MarcaDao marcaDao = new MarcaDao(database.getConnection());
@@ -35,11 +34,17 @@
                 List<Marca> marcas = marcaDao.findAll();
                 for (Marca marca: marcas) {
         %>
-        <li class="list-group-item">
-            <a target="_blank" style="display: inline-flex; padding: 10px 20px" href="zapatospormarca.jsp?id=<%= marca.getIdMarca() %>"><%= marca.getNombre() %></a>
-            <img src="logos/<%= marca.getLogo() %>" class="card-img-top" alt="imagen" style="margin-bottom:20px ! important; width:310px ! important; height:230px ! important">
-            <p><%= marca.getDescripcion()  %> </p>
-        </li>
+
+        <div class="col-sm-6" style="width:33% ! important; padding-bottom:20px ! important; margin:0 auto ! important">
+                               <div class="card text-center">
+                                 <div class="card-body">
+                                   <h5 class="card-title"><%= marca.getNombre() %></h5>
+                                   <img src="logos/<%= marca.getLogo() %>" class="card-img-top"  class="card-img-top" alt="imagen" style="margin-bottom:20px ! important; width:310px ! important; height:230px ! important">
+                                   <h6 class="card-text"><%= marca.getDescripcion()  %></h6>
+                                   <a href="zapatospormarca.jsp?id=<%= marca.getIdMarca() %>" class="btn btn-warning">See shoes</a>
+                                 </div>
+                               </div>
+                             </div>
         <%
             }
         } catch (SQLException sqle) {
