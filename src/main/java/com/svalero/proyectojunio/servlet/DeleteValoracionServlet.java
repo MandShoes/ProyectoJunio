@@ -25,12 +25,13 @@ public class DeleteValoracionServlet extends HttpServlet {
         if (currentUser == null) {
             response.sendRedirect("login.jsp");
         }
-        int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
-        int idZapato = Integer.parseInt(request.getParameter("idZapato"));
+        int idUsuario = Integer.parseInt(request.getParameter("idusuario"));
+        int idZapato = Integer.parseInt(request.getParameter("idzapato"));
         Database database = new Database();
         ValoracionDao valDao = new ValoracionDao(database.getConnection());
         try {
             valDao.delete(idUsuario, idZapato);
+            response.sendRedirect("zapatos.jsp");
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         }
