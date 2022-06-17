@@ -45,7 +45,7 @@
                 for (Zapato zapato: zapatos) {
         %>
         <li class="list-group-item">
-            <a target="_blank" href="zapato.jsp?id=<%= zapato.getIdZapato() %>"><%= zapato.getModelo() %></a>
+            <a target="_blank" href="zapato.jsp?idzapato=<%= zapato.getIdZapato() %>"><%= zapato.getModelo() %></a>
             <p><%= zapato.getMarca() %> - <%= zapato.getColor() %> | <%= zapato.getPrecio() %> </p>
         </li>
         <%
@@ -65,7 +65,7 @@
              for (Zapato zapato: zapatos) {
         %>
         <li class="list-group-item">
-            <a target="_blank" href="zapato.jsp?id=<%= zapato.getIdZapato() %>"><%= zapato.getModelo() %></a>
+            <a target="_blank" href="zapato.jsp?idzapato=<%= zapato.getIdZapato() %>"><%= zapato.getModelo() %></a>
             <p><%= zapato.getMarca() %> - <%= zapato.getColor() %> | <%= zapato.getPrecio() %> </p>
         </li>
         <%
