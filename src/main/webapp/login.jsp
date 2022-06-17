@@ -31,7 +31,7 @@
 
 <main class="form-signin">
     <form method="post" action="login">
-        <img class="mb-4" src="logos/zapato.jpg">
+        <img class="mb-4" src="logos/zapato.jpg" style="width:100px ! important; height:100px ! important" >
         <h1 class="h3 mb-3 fw-normal">Login</h1>
 
         <div class="form-floating">
@@ -43,9 +43,9 @@
             <label for="floatingPassword">Password</label>
         </div>
 
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+        <button class="w-100 btn btn-lg btn-warning" type="submit">Login</button>
         <br><br><br>
-        <a class="w-200 btn btn-lg btn-primary" href="userregister.jsp">Don't have an account? Create one here</a>
+        <a class="w-200 btn btn-lg btn-warning" href="userregister.jsp">Don't have an account? Create one here</a>
         <p class="mt-5 mb-3 text-muted">Shoes and Sneakers for Fussy Feet</p>
     </form>
 </main>

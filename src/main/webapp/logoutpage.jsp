@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="css/ada.css">
     <script src="https://kit.fontawesome.com/cc976dc165.js" crossorigin="anonymous"></script>
     <meta name="theme-color" content="#7952b3">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
   </head>
 
   <body>
