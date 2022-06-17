@@ -31,7 +31,7 @@
 
 <main class="form-signin">
     <form method="post" action="login">
-        <img class="mb-4" src="logos/zapatos.jsp">
+        <img class="mb-4" src="logos/zapato.jpg">
         <h1 class="h3 mb-3 fw-normal">Login</h1>
 
         <div class="form-floating">
