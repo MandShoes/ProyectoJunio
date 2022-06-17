@@ -27,6 +27,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
+<body>
+<jsp:include page="header.jsp" />
 <header>
 <!--ajax para procesar el formulario y enviarlo al servlet-->
 <script type="text/javascript">
@@ -69,3 +71,4 @@
   </form>
   <div id="result"></div>
 </main>
+<jsp:include page="footer.jsp" />

@@ -39,7 +39,6 @@
       <div class="form-floating">
           <input type="text" name="nombre" class="form-control" id="floatingInput" placeholder="Name">
           <label for="floatingInput">Name</label>
-
       </div>
       <br>
       <div class="form-floating">
