@@ -31,7 +31,7 @@
   });
 </script>
 
-<div class="container">
+<main class="container">
   <main class="form-signin">
   <form>
         <h1 class="h3 mb-3 fw-normal">New Account</h1>
@@ -60,7 +60,8 @@
       <a type="button" class="btn btn-link" href="login.jsp" role="button">Go to sign in</a>
     </form>
     <div id="result"></div>
-    </div>
     </main>
+</main>
+</body>
 
 
