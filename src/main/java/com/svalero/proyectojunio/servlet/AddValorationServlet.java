@@ -25,18 +25,20 @@ public class AddValorationServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
+        System.out.println("pasa por aqui");
         int cantidadEstrellas = Integer.parseInt(request.getParameter("newreview"));
         String descripcion = request.getParameter("newdescription");
         Date date = new Date(System.currentTimeMillis());
         int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
-        int idZapato = Integer.parseInt(request.getParameter("idZapato"));
+        int idZapato = Integer.parseInt(request.getParameter("idzapato"));
+        System.out.println("pasa por aqui");
 
         Database database = new Database();
         ValoracionDao valDao = new ValoracionDao(database.getConnection());
         try {
             valDao.add(date, cantidadEstrellas, descripcion, idUsuario, idZapato);
             out.println("<br><div class='alert alert-success' role='alert'>User was correctly created.</div>");
-            response.sendRedirect("login.jsp");
+            response.sendRedirect("zapatos.jsp");
         } catch (SQLException sqle) {
             out.println("<br><div class='alert alert-danger' role='alert'>Something wrong happened. Please check again in a few minutes.</div>");
             sqle.printStackTrace();

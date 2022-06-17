@@ -10,6 +10,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="css/ada.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
@@ -83,12 +84,12 @@
                         <input name="description" type="text" class="form-control w-25" id="description" value="<% out.print(valoracion.getDescripcion()); %>">
                     </div>
                     <input type="hidden" name="idUsuario" value="<%=currentUser.getIdUsuario()%>">
-                    <input type="hidden" name="idZapato" value="<%=zapatoId%>">
+                    <input type="hidden" name="idzapato" value="<%=zapatoId%>">
                     <button type="submit" class="btn btn-primary">Modify Review</button>
                 </form>
                 <div id="result1"></div>
 
-                <a href="deletevaloracion?id_usuario=<%= currentUser.getIdUsuario()%>id_zapato=<%= zapatoId%>" class="btn btn-secondary">Delete review</a>
+                <a href="deletevaloracion?idusuario=<%= currentUser.getIdUsuario()%>&idzapato=<%= zapatoId%>" class="btn btn-secondary">Delete review</a>
             </div>
             <%
                 } catch (Exception e) {
@@ -100,8 +101,8 @@
                     <input name="newreview" type="text" class="form-control w-25" id="newreview" value="">
                     <input name="newdescription" type="text" class="form-control w-25" id="newdescription" value="">
                 </div>
-                <input type="hidden" name="idUsuario" value="<%=currentUser.getIdUsuario()%>">
-                <input type="hidden" name="idZapato" value="<%=zapatoId%>">
+                <input type="hidden" name="idusuario" value="<%=currentUser.getIdUsuario()%>">
+                <input type="hidden" name="idzapato" value="<%=zapatoId%>">
                 <button type="submit" class="btn btn-primary">Create Review</button>
             </form>
             <div id="result2"></div>

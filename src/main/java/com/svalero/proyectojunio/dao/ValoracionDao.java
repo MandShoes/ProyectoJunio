@@ -20,17 +20,13 @@ public class ValoracionDao {
     public void add(Date date, int cantidadEstrellas, String descripcion, int idUsuario, int idZapato) throws SQLException {
         String sql = "INSERT INTO VALORACIONES (fecha_valoracion, cantidad_estrellas, descripcion, id_zapato, id_usuario) VALUES (?, ?, ?, ?, ?)";
 
-        connection.setAutoCommit(false);
-
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setDate(1, new java.sql.Date(date.getTime()));
         statement.setInt(2, cantidadEstrellas);
         statement.setString(3, descripcion);
-        statement.setInt(4, idUsuario);
-        statement.setInt(5, idZapato);
+        statement.setInt(4, idZapato);
+        statement.setInt(5, idUsuario);
         statement.executeUpdate();
-        connection.commit();
-        connection.setAutoCommit(true);
     }
 
     public boolean modify(int idUsuario, int idZapato, Valoracion valoracion) throws SQLException {
