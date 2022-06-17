@@ -32,8 +32,7 @@ public class AddUserServlet extends HttpServlet {
         UsuarioDao userDao = new UsuarioDao(database.getConnection());
         try {
             userDao.add(user);
-            out.println("<br><div class='alert alert-success' role='alert'>User was correctly created.</div>");
-            response.sendRedirect("login.jsp");
+            out.println("/AdmandShoes/login.jsp");
         } catch (EmailAlreadyExistException eaee) {
             out.println("<br><div class='alert alert-danger' role='alert'>Email already registered.</div>");
             eaee.printStackTrace();
