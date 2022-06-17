@@ -56,7 +56,7 @@
         zapato = zapatoDao.findById(zapatoId).get();
 
 %>
-<div class="container">
+<div class="container" style="margin-top: 20px ! important">
 
  <div class="col-sm-6" style="width:50% ! important; padding-bottom:20px ! important;">
                        <div class="card text-center">
@@ -72,25 +72,12 @@
                                            <option selected>Available sizes</option>
                                            <option value="1"><%= zapato.getNumero()%></option>
                                        </select>
-                           <h6 class="card-text"><%= zapato.getProveedor().getNombre()%> %></h6>
+                           <h6 class="card-text"><%= zapato.getProveedor().getNombre()%></h6>
                            <a href="#" class="btn btn-warning">Buy shoes</a>
+
                          </div>
                        </div>
                      </div>
-
-    <div class="card text-center">
-        <div class="card-header">
-            <p><%= zapato.getModelo()%></p> - <p><%= zapato.getColor()%></p> - <p><%= zapato.getSexoZapato()%></p>
-            <p><%= zapato.getMarca().getNombre()%></p>
-        </div>
-        <div class="card-body">
-            <p class="card-text"><%= zapato.getDescripcion() %></p>
-            <select class="form-select form-select-border-radius: 25%; " aria-label="select">
-                <option selected>Available sizes</option>
-                <option value="1"><%= zapato.getNumero()%></option>
-            </select>
-
-            <p class="card-text">Proveedor: <%= zapato.getProveedor().getNombre()%>.</p>
 
             <%
                 ValoracionDao valDao = new ValoracionDao(db.getConnection());
@@ -114,11 +101,11 @@
                     </div>
                     <input type="hidden" name="idUsuario" value="<%=currentUser.getIdUsuario()%>">
                     <input type="hidden" name="idzapato" value="<%=zapatoId%>">
-                    <button type="submit" class="btn btn-primary">Modify Review</button>
+                    <button type="submit" class="btn btn-warning">Modify Review</button>
                 </form>
                 <div id="result1"></div>
 
-                <a href="deletevaloracion?idusuario=<%= currentUser.getIdUsuario()%>&idzapato=<%= zapatoId%>" class="btn btn-secondary">Delete review</a>
+                <a href="deletevaloracion?idusuario=<%= currentUser.getIdUsuario()%>&idzapato=<%= zapatoId%>" class="btn btn-danger">Delete review</a>
             </div>
             <%
                 } catch (Exception e) {
@@ -132,7 +119,7 @@
                 </div>
                 <input type="hidden" name="idusuario" value="<%=currentUser.getIdUsuario()%>">
                 <input type="hidden" name="idzapato" value="<%=zapatoId%>">
-                <button type="submit" class="btn btn-primary">Create Review</button>
+                <button type="submit" class="btn btn-warning">Create Review</button>
             </form>
             <div id="result2"></div>
             <%
