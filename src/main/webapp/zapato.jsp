@@ -36,7 +36,7 @@
     });
 </script>
 <%
-    int zapatoId = Integer.parseInt(request.getParameter("id"));
+    int zapatoId = Integer.parseInt(request.getParameter("idzapato"));
     Database db = new Database();
     ZapatoDao zapatoDao = new ZapatoDao(db.getConnection());
     Zapato zapato;
@@ -67,8 +67,7 @@
                 ValoracionDao valDao = new ValoracionDao(db.getConnection());
                 Valoracion valoracion = null;
                 try {
-                    Optional<Valoracion> optionalValoracion = valDao.findById(zapatoId, currentUser.getIdUsuario());
-                    valoracion = optionalValoracion.orElseThrow(new Supplier<Throwable>() {
+                    valoracion = valDao.findById(zapatoId, currentUser.getIdUsuario()).orElseThrow(new Supplier<Throwable>() {
                         @Override
                         public Throwable get() {
                             return new Exception();
