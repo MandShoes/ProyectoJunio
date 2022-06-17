@@ -57,7 +57,7 @@
       <br>
       <div class="form-floating">
          <input type="text" name="direccion" class="form-control" id="floatingInput" placeholder="Password">
-         <label for="floatingInput">Password</label>
+         <label for="floatingInput">Address</label>
       </div>
       <br>
       <button type="submit" class="w-100 btn btn-lg btn-warning">Create user</button>
