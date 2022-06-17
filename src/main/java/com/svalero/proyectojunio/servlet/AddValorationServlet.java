@@ -37,8 +37,7 @@ public class AddValorationServlet extends HttpServlet {
         ValoracionDao valDao = new ValoracionDao(database.getConnection());
         try {
             valDao.add(date, cantidadEstrellas, descripcion, idUsuario, idZapato);
-            out.println("<br><div class='alert alert-success' role='alert'>User was correctly created.</div>");
-            response.sendRedirect("zapatos.jsp");
+            out.println("/AdmandShoes/index.jsp");
         } catch (SQLException sqle) {
             out.println("<br><div class='alert alert-danger' role='alert'>Something wrong happened. Please check again in a few minutes.</div>");
             sqle.printStackTrace();

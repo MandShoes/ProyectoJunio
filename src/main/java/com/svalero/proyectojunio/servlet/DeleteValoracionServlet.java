@@ -31,7 +31,7 @@ public class DeleteValoracionServlet extends HttpServlet {
         ValoracionDao valDao = new ValoracionDao(database.getConnection());
         try {
             valDao.delete(idUsuario, idZapato);
-            response.sendRedirect("zapatos.jsp");
+            out.println("/AdmandShoes/index.jsp");
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         }
