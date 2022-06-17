@@ -4,6 +4,8 @@
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="com.svalero.proyectojunio.dao.ZapatoDao" %>
 <%@ page import="com.svalero.proyectojunio.domain.Zapato" %>
+<%@ page import="com.svalero.proyectojunio.dao.MarcaDao" %>
+<%@ page import="com.svalero.proyectojunio.domain.Marca" %>
 <%@ page import="org.apache.commons.lang.StringUtils" %>
 <%
     Usuario currentUser = (Usuario) session.getAttribute("currentUser");
@@ -51,7 +53,7 @@
         %>
         <li class="list-group-item" style="width: 50% ! important">
             <a target="_blank" href="zapato.jsp?idzapato=<%= zapato.getIdZapato() %>"><%= zapato.getModelo() %></a>
-            <p><%= zapato.getMarca() %> - <%= zapato.getColor() %> | <%= zapato.getPrecio() %> </p>
+            <p><%= zapato.getMarca().getNombre() %> - <%= zapato.getColor() %> | <%= zapato.getPrecio() %> </p>
         </li>
         <%
                 }
