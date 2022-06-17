@@ -29,7 +29,7 @@ public class AddValorationServlet extends HttpServlet {
         int cantidadEstrellas = Integer.parseInt(request.getParameter("newreview"));
         String descripcion = request.getParameter("newdescription");
         Date date = new Date(System.currentTimeMillis());
-        int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
+        int idUsuario = Integer.parseInt(request.getParameter("idusuario"));
         int idZapato = Integer.parseInt(request.getParameter("idzapato"));
         System.out.println("pasa por aqui");
 
