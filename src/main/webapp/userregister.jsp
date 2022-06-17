@@ -25,7 +25,7 @@
       event.preventDefault();
       var formValue = $(this).serialize();
       $.post("register", formValue, function(data) {
-          if (data == "/AdmandShoes/login.jsp") {
+          if ($.trim(data) == "/AdmandShoes/login.jsp") {
               window.location.href = data;
           } else {
               $("#result").html(data);
