@@ -37,8 +37,10 @@
                 List<Zapato> zapatos = zapatoDao.findAllByBrand(Integer.parseInt(marcaId));
                 for (Zapato zapato: zapatos) {
         %>
+
         <li class="list-group-item" style="width: 50% ! important">
             <a target="_blank" href="zapato.jsp?id=<%= zapato.getIdZapato() %>"><%= zapato.getModelo() %></a>
+
             <p><%= zapato.getMarca() %> - <%= zapato.getColor() %> | <%= zapato.getPrecio() %> </p>
         </li>
         <%
