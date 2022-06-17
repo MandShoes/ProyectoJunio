@@ -34,10 +34,7 @@ public class LoginServlet extends HttpServlet {
                 out.println("Succesful login.");
                 response.sendRedirect("index.jsp");
             } else {
-                out.println("<script type=\"text/javascript\">");
-                out.println("alert('Incorrect credentials.');");
-                out.println("location='index.jsp';");
-                out.println("</script>");
+                response.sendRedirect("loginincorrect.jsp");
             }
         } catch (SQLException sqle) {
             sqle.printStackTrace();
