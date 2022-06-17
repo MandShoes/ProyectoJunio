@@ -45,8 +45,7 @@
         response.sendRedirect("login.jsp");
     }
     try {
-        Optional<Zapato> optionalZapato = zapatoDao.findById(zapatoId);
-        zapato = optionalZapato.get();
+        zapato = zapatoDao.findById(zapatoId).get();
 
 %>
 <div class="container">
@@ -68,7 +67,7 @@
                 ValoracionDao valDao = new ValoracionDao(db.getConnection());
                 Valoracion valoracion = null;
                 try {
-                    Optional<Valoracion> optionalValoracion = valDao.findById(Integer.parseInt(zapatoId), currentUser.getIdUsuario());
+                    Optional<Valoracion> optionalValoracion = valDao.findById(zapatoId, currentUser.getIdUsuario());
                     valoracion = optionalValoracion.orElseThrow(new Supplier<Throwable>() {
                         @Override
                         public Throwable get() {
