@@ -3,6 +3,8 @@
 <%@ page import="com.svalero.proyectojunio.dao.Database" %>
 <%@ page import="com.svalero.proyectojunio.domain.Zapato" %>
 <%@ page import="com.svalero.proyectojunio.dao.ZapatoDao" %>
+<%@ page import="com.svalero.proyectojunio.domain.Marca" %>
+<%@ page import="com.svalero.proyectojunio.dao.MarcaDao" %>
 <%@ page import="com.svalero.proyectojunio.domain.Usuario" %>
 <%@ page import="com.svalero.proyectojunio.domain.Valoracion" %>
 <%@ page import="com.svalero.proyectojunio.dao.ValoracionDao" %>
@@ -12,6 +14,10 @@
     <link rel="stylesheet" href="css/ada.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/cc976dc165.js" crossorigin="anonymous"></script>
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 <script type="text/javascript">
@@ -36,6 +42,7 @@
         });
     });
 </script>
+<jsp:include page="header.jsp" />
 <%
     int zapatoId = Integer.parseInt(request.getParameter("idzapato"));
     Database db = new Database();
@@ -50,6 +57,27 @@
 
 %>
 <div class="container">
+
+ <div class="col-sm-6" style="width:50% ! important; padding-bottom:20px ! important;">
+                       <div class="card text-center">
+                       <div class="card-header">
+                       <p><%= zapato.getModelo()%> - <%= zapato.getSexoZapato()%></p>
+                       </div>
+                         <div class="card-body">
+                           <h5 class="card-title"><%= zapato.getMarca().getNombre()%></h5>
+                           <img src="logos/<%= zapato.getMarca().getLogo() %>" class="card-img-top"  class="card-img-top" alt="imagen" style="margin-bottom:20px ! important; width:310px ! important; height:230px ! important">
+                           <h6 class="card-text">Color: <p><%= zapato.getColor()%></p></h6>
+                           <h6 class="card-text"><%= zapato.getDescripcion() %></h6>
+                           <select class="form-select form-select-border-radius: 25%; " aria-label="select">
+                                           <option selected>Available sizes</option>
+                                           <option value="1"><%= zapato.getNumero()%></option>
+                                       </select>
+                           <h6 class="card-text"><%= zapato.getProveedor().getNombre()%> %></h6>
+                           <a href="#" class="btn btn-warning">Buy shoes</a>
+                         </div>
+                       </div>
+                     </div>
+
     <div class="card text-center">
         <div class="card-header">
             <p><%= zapato.getModelo()%></p> - <p><%= zapato.getColor()%></p> - <p><%= zapato.getSexoZapato()%></p>
@@ -75,6 +103,7 @@
                         }
                     });
             %>
+            </div>
             <div class="container">
                 <h2>Review</h2>
                 <!-- Añadir aqui modify y delete -->
@@ -119,6 +148,7 @@
 <%
     }
 %>
+<jsp:include page="footer.jsp" />
 </body>
 </html>
 
