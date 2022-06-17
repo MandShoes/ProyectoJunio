@@ -25,7 +25,7 @@
 </head>
 <body>
 <jsp:include page="header.jsp" />
-<div class="container">
+<div class="container" style="text-align:center ! important">
     <h3>Navigate between the brands to choose the best shoe for your feet.</h3>
         <%
             Database database = new Database();

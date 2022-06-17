@@ -16,8 +16,13 @@
 <head>
     <link rel="stylesheet" href="css/ada.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/cc976dc165.js" crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+<jsp:include page="header.jsp" />
 <div class="container">
     <h2>All available shoes of your favorite brand.</h2>
 
@@ -32,8 +37,10 @@
                 List<Zapato> zapatos = zapatoDao.findAllByBrand(Integer.parseInt(marcaId));
                 for (Zapato zapato: zapatos) {
         %>
-        <li class="list-group-item">
-            <a target="_blank" href="zapato.jsp?idzapato=<%= zapato.getIdZapato() %>"><%= zapato.getModelo() %></a>
+
+        <li class="list-group-item" style="width: 50% ! important">
+            <a target="_blank" href="zapato.jsp?id=<%= zapato.getIdZapato() %>"><%= zapato.getModelo() %></a>
+
             <p><%= zapato.getMarca() %> - <%= zapato.getColor() %> | <%= zapato.getPrecio() %> </p>
         </li>
         <%
@@ -48,5 +55,6 @@
 
     </ul>
 </div>
+<jsp:include page="footer.jsp" />
 </body>
 </html>
